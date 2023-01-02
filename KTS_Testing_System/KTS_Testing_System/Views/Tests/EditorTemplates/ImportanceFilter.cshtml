@@ -1,0 +1,40 @@
+﻿@model KTS_Testing_System.ViewModel.ImportanceFilter
+@using KTS_Testing_System.Classes
+@using KTS_Testing_System.Extensions;
+
+
+
+
+<div>
+    @using (Html.BeginCollectionItem("listImportanceFilter"))
+    {
+        @Html.HiddenFor(model => model.subject_difficulty_importance_id)
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="form-group col-md-6 display-table">
+                        @*@Html.LabelFor(model => model.importance_code, "Importance", new { @class = "col-md-4 control-label display-cell" })*@
+                        <div class="col-md-8 display-cell">
+                            @Html.DropDownListFor(model => model.importance_code, Lookup.GetImportances(), "-- Select Importance --", new { @class = "ddlProjectvalue form-control",@disabled="disabled" })
+                            @Html.HiddenFor(m => m.importance_code)
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6 display-table">
+                        @Html.LabelFor(model => model.ImportanceNoOFMcqs, "No of MCQs", new { @class = "col-md-4 control-label display-cell" })
+                        <div class="col-md-8 display-cell">
+                            @Html.EditorFor(x => x.ImportanceNoOFMcqs, new { htmlAttributes = new { @class = "form-control mandatoryField",@onchange="importanceChange(this)" } })
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            @*<div class="col-lg-2">
+                <button type='button' class='btn btn-danger display-cell floatright' id="" onclick='DeleteLocationNew(this,"3")'>Delete</button>
+            </div>*@
+
+
+        </div>
+    }
+</div>

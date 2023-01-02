@@ -1,0 +1,136 @@
+﻿@model KTS_Testing_System.ViewModel.QuestionsIndexVM
+@using KTS_Testing_System.Classes
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="row panel-heading bg-system">
+    Questions Management
+
+    <div class="floatright">
+        <div class="col-md-12">
+
+            @Html.ActionLink("Create New Question", "Create", "Questions", null, htmlAttributes: new { @class = "btn btn-bg-system" })
+
+        </div>
+    </div>
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <label>Questions Management</label>
+        </h4>
+    </div>
+    <!-- START table-responsive-->
+    <div class="table-responsive">
+        <table id="tblQuestions" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th width="15%" style="text-align:center">Serial No.</th>
+                    <th width="15%" style="text-align:center">Subject</th>
+                    <th width="15%" style="text-align:center">Question Detail</th>
+                    <th width="15%" style="text-align:center">Difficulty</th>
+                    <th width="15%" style="text-align:center">Importance</th>
+                    <th width="15%" style="text-align:center">Level</th>
+                    <th width="15%" style="text-align:center">Marks</th>
+                    <th width="15%" style="text-align:center">Creation User</th>
+                    <th width="15%" style="text-align:center">Insertion Date</th>
+                    <th width="15%" style="text-align:center">Action</th>
+
+                </tr>
+            </thead>
+            <tbody style="text-align:center"></tbody>           
+        </table>
+
+    </div>
+    <!-- END table-responsive-->
+    <div class="panel-footer">      
+
+    </div>
+</div>
+
+@*}*@
+
+
+@section scripts
+{
+    <script>
+                    var columns;
+                    $(document).ready(function () {
+                        columns = [
+                            { "title": "Serial No.", "data": "serial_no", "searchable": true },
+                            { "title": "Subject", "data": "subject_name", "searchable": true },
+                            { "title": "Question Detail", "data": "description", "searchable": true },                            
+                            { "title": "Difficulty", "data": "difficulty_code", "searchable": true },                            
+                            { "title": "Importance", "data": "importance_code", "searchable": true },                            
+                            { "title": "Level", "data": "question_level", "searchable": true },                            
+                            { "title": "Marks", "data": "marks", "searchable": true },   
+                            { "title": "Creation User", "data": "user", "searchable": true },   
+                            { "title": "Insertion Date", "data": "insertion_timestamp", "searchable": true },                            
+                        ];
+                        
+                        columns.push({
+                            "title": "Action", "data": "question_id", "render": function (question_id) {
+                                return '<div style="overflow: hidden;white-space: nowrap;"><a class="btn btn-bg-system" href="/Questions/Edit?id=' + question_id + '" type="button" >Edit</a></div>';
+                            }
+                        });
+
+
+
+                        console.log(columns);
+
+                        var table = $('#tblQuestions').DataTable({
+                            "processing": true,
+                            "serverSide": true,
+                            "order": [[1, "asc"]],
+                            "rowId": 'question_id',
+                            "columnDefs": [{
+                                "targets": [0,9], "searchable": false, "orderable": false, "visible": true,
+                            }
+                            ],
+                            "ajax": {
+                                "url": "/Questions/GetIndex",
+                                "type": "POST",
+                                "dataType": "json",
+                                "data": function (d) {
+                                    return $.extend({}, d, {
+                                        //"id": formID
+                                    });
+                                }
+
+                            },
+                            "columns": columns
+                        });
+
+                    });
+
+
+    </script>
+
+
+
+}
+
+@if (!string.IsNullOrEmpty(Model.MessageTitle))
+{
+    <script src="~/Content/vendor/sweetalert/dist/sweetalert.min.js"></script>
+            <script type="text/javascript"></script>
+    if (Model.MessageTitle == "Success")
+    {
+        <script>
+
+                    swal('@Model.MessageTitle', '@Model.MessageDescription','success');
+        </script>
+    }
+    else
+    {
+        <script>
+
+                    swal('@Model.MessageTitle', '@Model.MessageDescription','error');
+        </script>
+
+    }
+}

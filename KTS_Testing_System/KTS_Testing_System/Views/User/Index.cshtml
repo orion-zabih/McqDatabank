@@ -1,0 +1,205 @@
+﻿@model KTS_Testing_System.ViewModel.UserIndexVM
+@using KTS_Testing_System.Classes
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="row panel-heading bg-system">
+    User Management
+
+    <div class="floatright">
+        <div class="col-md-12">
+
+            @Html.ActionLink("Create New User", "Create", "User", null, htmlAttributes: new { @class = "btn btn-bg-system" })
+
+        </div>
+    </div>
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <label>User Management</label>
+        </h4>
+    </div>
+    <!-- START table-responsive-->
+    <div class="table-responsive">
+        <table id="tblUsers" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th width="15%" style="text-align:center">Username</th>
+                    <th width="15%" style="text-align:center">Full Name</th>
+                    @*<th width="15%" style="text-align:center">Last Name</th>*@
+                    <th width="15%" style="text-align:center">Status</th>
+                    <th width="15%" style="text-align:center">Action</th>
+
+                </tr>
+            </thead>
+            <tbody style="text-align:center"></tbody>
+            @* <tbody>
+
+                    @if (Model.UsersList!=null)
+                    {
+                        foreach (var Row in Model.UsersList)
+                        {
+
+                        <tr>
+
+                            <td>
+                                <div class="media">
+                                    @if (Row.USER_CITIZEN_DATA != null && Row.USER_CITIZEN_DATA.PHOTOGRAPH != null)
+                                    {  <img class="img-responsive img-circle" src="data:image/jpg;base64,@Convert.ToBase64String(Row.USER_CITIZEN_DATA.PHOTOGRAPH)" /> }
+                                    else
+                                    {  <img src="~/Content/images/defaultUserImage.png" alt="Image" class="img-responsive img-circle">}
+
+                                </div>
+                            </td>
+                            <td>@Row.USERNAME</td>
+                            <td>@Row.FIRST_NAME</td>
+                            <td>@Row.LAST_NAME</td>
+                            <td>@(SuperAdmin?SYSTEM_LEVELS.head_quarter: Row.USER_ELECTION_MAP.FirstOrDefault(g=>g.ELECTION_EVENT_ID==elec_code)!=null? Row.USER_ELECTION_MAP.FirstOrDefault(g => g.ELECTION_EVENT_ID == elec_code).USER_LEVEL:"")</td>
+                            <td>@Row.STATUS</td>
+                            <td>
+                                <a href="~/User/Edit?id=@Row.USER_ID " class="btn btn-bg-system submitfloat">Edit</a>
+                                <a href="~/User/ChangePasswordByAdmin?id=@Row.USER_ID " class="btn btn-bg-system submitfloat">ChangePassword</a>
+                            </td>
+
+                        </tr>
+                        }
+                    }
+                </tbody>*@
+        </table>
+
+    </div>
+    <!-- END table-responsive-->
+    <div class="panel-footer">
+        @*<div class="row" style="text-align:center;">
+                Page @(Model.UsersList.PageCount < Model.UsersList.PageNumber ? 0 : Model.UsersList.PageNumber) of @Model.UsersList.PageCount
+                @Html.PagedListPager(Model.UsersList, page => Url.Action("Index", new { Page = page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+
+            </div>*@
+
+    </div>
+</div>
+
+@*}*@
+
+
+@section scripts
+{
+    <script>
+                    var columns;
+                   // var formID = $('#FormId').val();
+                    $(document).ready(function () {
+                        columns = [
+                           // { "title": "S.No", "data": "serial_no", "searchable": true },
+                            //{
+                            //    "title": "Photo", "render": function (data, type, full, meta) {
+                            //        var photo;
+                            //        if (full.photograph == "" || full.photograph == "null") {
+
+                            //            photo = '<i class="icon-custom icon-sm icon-bg-u fa "></i>'
+                            //        }
+                            //        else {
+                            //            photo = '<i class="icon-custom icon-sm icon-bg-u fa "><img src=' + full.photograph + ' style="max-width: 30px;" class="img-responsive hover-effect" /></i>';
+
+                            //        }
+                            //        return photo;
+                            //    }
+                            //},
+                            { "title": "User Name", "data": "user_name", "searchable": true },
+                            { "title": "Full Name", "data": "full_name", "searchable": true }
+                            //{ "title": "Status", "data": "status", "searchable": true }
+
+
+
+                        ];
+                        columns.push({
+                            "title": "Status", "render": function (data, type, full, meta) {
+                                var buttons = '';
+                                if (full.status == "active")
+                                    buttons = '<Label type="button" id="btnPS"  class="btn btn-oval  btn-success" style="width:90%"  > ' + 'Active' + ' </Label>';
+                                else if (full.status == "empty")
+                                    buttons = '<Label type="button" id="btnPS"  class="btn btn-oval  btn-warning" style="width:90%"  > ' + 'Created' + ' </Label>';
+
+                                else if (full.status == "banned")
+                                    buttons = '<Label type="button" id="btnPS"  class="btn btn-oval  btn-warning" style="width:90%"  > ' + 'Banned ' + ' </Label>';
+                                else if (full.status == "deleted")
+                                    buttons = '<Label type="button" id="btnPS"  class="btn btn-oval  btn-danger" style="width:90%"  > ' + ' Deleted ' + ' </Label>';
+                                return buttons;
+                            }
+                        });
+                        columns.push({
+                            "title": "Action", "data": "user_id", "render": function (user_id) {
+                                return '<div style="overflow: hidden;white-space: nowrap;"><a class="btn btn-bg-system" href="/User/Edit?id=' + user_id + '" type="button" >Edit</a> <a class="btn btn-bg-system" href="/User/ChangePasswordByAdmin?id=' + user_id + '" type="button" >Change Password</a></div>';
+                            }
+                        });
+
+
+
+                        //console.log(columns);
+
+                        var table = $('#tblUsers').DataTable({
+                            "processing": true,
+                            "serverSide": true,
+                            "order": [[1, "asc"]],
+                            "rowId": 'user_id',
+                            "columnDefs": [{
+                                "targets": [0,2], "searchable": false, "orderable": false, "visible": true,
+
+                            }
+                            ],
+                            "ajax": {
+                                "url": "/User/GetIndex",
+                                "type": "POST",
+                                "dataType": "json",
+                                "data": function (d) {
+                                    return $.extend({}, d, {
+                                        //"id": formID
+                                    });
+                                }
+
+                            },
+                            "columns": columns
+                        });
+
+                    });
+
+
+    </script>
+    <script>
+                //$('#article-editor').modal('show');
+
+
+                //$(document).ready(function () {
+                //    $('#tblUsers').dataTable()
+                //});
+    </script>
+
+
+
+}
+
+@if (!string.IsNullOrEmpty(Model.MessageTitle))
+        {
+            <script src="~/Content/vendor/sweetalert/dist/sweetalert.min.js"></script>
+            <script type="text/javascript"></script>
+            if (Model.MessageTitle == "Success")
+            {
+                <script>
+
+                    swal('@Model.MessageTitle', '@Model.MessageDescription','success');
+                </script>
+            }
+            else
+            {
+                <script>
+
+                    swal('@Model.MessageTitle', '@Model.MessageDescription','error');
+                </script>
+
+    }
+        }

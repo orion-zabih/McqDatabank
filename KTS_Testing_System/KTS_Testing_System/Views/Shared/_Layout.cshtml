@@ -1,0 +1,364 @@
+﻿<!DOCTYPE html>
+<html class="backgroundsize bgpositionshorthand no-bgpositionxy no-bgrepeatround no-bgrepeatspace bgsizecover borderradius cssanimations csscalc csstransforms supports csstransforms3d csstransitions no-flexboxtweener fontface inlinesvg localstorage multiplebgs preserve3d sessionstorage smil svgclippaths svgfilters svgforeignobject canvas todataurljpeg todataurlpng no-todataurlwebp no-touch" lang="en">
+@using KTS_Testing_System.Classes
+
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Bootstrap Admin App + jQuery">
+    <meta name="keywords" content="app, responsive, jquery, bootstrap, dashboard, admin">
+    <META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <title>@Constants.PROJECT_TITLE_INITIALS</title>
+
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+
+    <!-- SECTION STYLES -->
+    <!-- =============== ~/Content/vendor STYLES ===============-->
+    <!-- FONT AWESOME-->
+    <link rel="stylesheet" href="~/Content/vendor/fontawesome/css/font-awesome.min.css">
+    <!-- SIMPLE LINE ICONS-->
+    <link rel="stylesheet" href="~/Content/vendor/simple-line-icons/css/simple-line-icons.css">
+    <!-- ANIMATE.CSS-->
+    <link rel="stylesheet" href="~/Content/vendor/animate.css/animate.min.css">
+    <!-- WHIRL (spinners)-->
+    <link rel="stylesheet" href="~/Content/vendor/whirl/dist/whirl.css">
+    <!-- =============== PAGE ~/Content/vendor STYLES ===============-->
+    <!-- WEATHER ICONS-->
+    <link rel="stylesheet" href="~/Content/vendor/weather-icons/css/weather-icons.min.css">
+    <!-- =============== BOOTSTRAP STYLES ===============-->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.css" id="bscss">
+    <!-- =============== APP STYLES ===============-->
+    <link rel="stylesheet" href="~/Content/css/app.css" id="maincss">
+    <!-- =============== DATE TIME PICKER STYLES ===============-->
+    <link rel="stylesheet" href="~/Content/vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css">
+    <!-- =============== SELECT2 STYLES ===============-->
+    <link href="~/Content/vendor/select2/dist/css/select2.css" rel="stylesheet" />
+
+    @*<link href="~/Content/vendor/ngDialog/css/ngDialog-theme-default.min.css" rel="stylesheet" />
+        <link href="~/Content/vendor/ngDialog/css/ngDialog.min.css" rel="stylesheet" />*@
+    <link href="~/Content/css/theme-d.css" rel="stylesheet" />
+    <link href="~/content/site.css" rel="stylesheet" />
+
+    <link href="~/Content/vendor/sweetalert/dist/sweetalert.css" rel="stylesheet" />
+
+    <link href="/Content/jQuery.FileUpload/css/jquery.fileupload.css" rel="stylesheet" />
+    <link href="/Content/jQuery.FileUpload/css/jquery.fileupload-ui.css" rel="stylesheet" />
+    <link href="/Content/blueimp-gallery2/css/blueimp-gallery.css" rel="stylesheet" />
+    <link href="/Content/blueimp-gallery2/css/blueimp-gallery-video.css" rel="stylesheet" />
+    <link href="/Content/blueimp-gallery2/css/blueimp-gallery-indicator.css" rel="stylesheet" />
+
+    @*<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">*@
+
+
+    <style type="text/css">
+        .jqstooltip {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            visibility: hidden;
+            background: rgb(0, 0, 0) transparent;
+            background-color: rgba(0,0,0,0.6);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+            -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+            color: white;
+            font: 10px arial, san serif;
+            text-align: left;
+            white-space: nowrap;
+            padding: 5px;
+            border: 1px solid white;
+            z-index: 10000;
+        }
+
+        .jqsfield {
+            color: white;
+            font: 10px arial, san serif;
+            text-align: left;
+        }
+
+
+
+
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+
+        #loadingOverlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: black url(../../Content/images/loadingHorizontal.gif) center center no-repeat;
+            opacity: .5;
+            z-index: 1;
+            top: 0;
+            bottom: 0;
+        }
+    </style>
+
+    <script>
+
+    </script>
+
+</head>
+@RenderSection("styles", required: false)
+<body>
+
+    @*<div id="fullPageLoading" >
+            <img src="~/Content/images/loading.gif" width="100px" height="100px"/>
+        </div>*@
+
+    <div class="wrapper">
+        <!-- top navbar-->
+        <header class="topnavbar-wrapper">
+            @if (!Request.IsAuthenticated)
+            {
+                <img src="~/Content/images/kmc banner.jpg" style="width:100%;" />
+            }
+            else
+            {
+                 <!-- START Top Navbar-->
+            <!-- Include TopNavbar.html here -->
+                @Html.Partial("TopNavbar")
+            <!-- END Top Navbar-->
+            }
+
+        </header>
+        @{
+            var result1 = HttpContext.Current.User.Identity.IsAuthenticated;
+            var result2 = Request.IsAuthenticated;
+        }
+        @if (Request.IsAuthenticated)
+        {
+        <!-- sidebar-->
+
+            <aside class="aside">
+                <!-- START Sidebar (left)-->
+                <!-- include sidebar.html for left sidebar-->
+                @Html.Partial("sidebar")
+                <!-- END Sidebar (left)-->
+            </aside>
+
+        <!-- offsidebar-->
+            <aside class="offsidebar">
+                <!-- START Off Sidebar (right)-->
+                <!-- include sideBarRight.html -->
+                @Html.Partial("sideBarRight")
+
+                <!-- END Off Sidebar (right)-->
+            </aside>
+
+        <!-- Main section-->
+            <section>
+                <!-- Page content-->
+                <div class="content-wrapper">
+
+
+                    <div id="loadingOverlay" style="display:none;"></div>
+
+                    <!-- Body Content -->
+                    @RenderBody()
+
+                </div>
+            </section>
+        }
+        else
+        {
+
+
+
+            ///THIS SECTION IS ONLY FOR LOGIN/////
+            <section style="margin-left:0px;position: static;margin-bottom:0px!important;">
+                <div class="" style="height:100%;width:100%; position:absolute;overflow:hidden; background-repeat:no-repeat; background-color:#f5f7fa ">
+                    @*<div class="" style="filter: blur(5px); height:100%;width:100%; position:absolute;overflow:hidden; background-repeat:no-repeat; " >*@
+                    @*<img src="~/Content/images/login-bg.jpg"  style="height:100%;width:100%;"/>*@
+                    @*<img src="~/Content/images/Back-image-Main-Copy.png" style="height:100%;width:100%;" />*@
+
+                </div>
+                <div class="content-wrapper">
+
+                    @RenderBody()
+
+                </div>
+            </section>
+            ///END LOGIN SECTION/////
+        }
+
+        @if (Request.IsAuthenticated)
+        {
+        <!-- Page footer-->
+            <footer>
+                <span>© @DateTime.Now.Year - @Constants.PROJECT_TITLE - version (@Utility.getAppVersion())  <small></small> </span>
+            </footer>
+        }
+    </div>
+
+
+
+    <!-- SECTION SCRIPTS -->
+    <!-- =============== ~/Content/vendor SCRIPTS ===============-->
+    <!-- MODERNIZR-->
+    <script src="~/Content/vendor/modernizr/modernizr.custom.js"></script>
+    <!-- MATCHMEDIA POLYFILL-->
+    <script src="~/Content/vendor/matchMedia/matchMedia.js"></script>
+    <!-- JQUERY-->
+    @*<script src="~/Scripts/jquery-3.3.1.js"></script>*@
+    <script src="~/Scripts/jquery-2.2.4.js"></script>
+    @*<script src="~/Scripts/jquery-1.10.2.js"></script>*@
+    <script src="~/Scripts/jquery-ui.js"></script>
+    @*<script src="~/Content/vendor/jquery/dist/jquery.js"></script>*@
+    <!-- BOOTSTRAP-->
+
+    <script src="~/Content/vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/Content/vendor/jQuery-Storage-API/jquery.storageapi.js"></script>
+    <!-- JQUERY EASING-->
+    <script src="~/Content/vendor/jquery.easing/js/jquery.easing.js"></script>
+    <!-- ANIMO-->
+    <script src="~/Content/vendor/animo.js/animo.js"></script>
+    <!-- SLIMSCROLL-->
+    <script src="~/Content/vendor/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- SCREENFULL-->
+    <script src="~/Content/vendor/screenfull/dist/screenfull.js"></script>
+
+
+    <!-- STORAGE API-->
+    <!-- LOCALIZE-->
+    @*<script src="~/Content/vendor/jquery-localize-i18n/dist/jquery.localize.js"></script>*@
+    <!-- RTL demo-->
+    @*<script src="js/demo/demo-rtl.js"></script>*@
+    <!-- =============== PAGE ~/Content/vendor SCRIPTS ===============-->
+    <!-- SPARKLINE-->
+    <script src="~/Content/vendor/sparkline/index.js"></script>
+    <!-- FLOT CHART-->
+    <script src="~/Content/vendor/Flot/jquery.flot.js"></script>
+    <script src="~/Content/vendor/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+    <script src="~/Content/vendor/Flot/jquery.flot.resize.js"></script>
+    <script src="~/Content/vendor/Flot/jquery.flot.pie.js"></script>
+    <script src="~/Content/vendor/Flot/jquery.flot.time.js"></script>
+    <script src="~/Content/vendor/Flot/jquery.flot.categories.js"></script>
+    <script src="~/Content/vendor/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <!-- CLASSY LOADER-->
+    <script src="~/Content/vendor/jquery-classyloader/js/jquery.classyloader.min.js"></script>
+    <!-- MOMENT JS-->
+    <script src="~/Content/vendor/moment/min/moment-with-locales.min.js"></script>
+    <script src="~/Content/vendor/select2/dist/js/select2.js"></script>
+    <!-- DateTimePicker -->
+    <script type="text/javascript" src="~/Content/vendor/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    @*<script src="~/Scripts/jquery.validate-vsdoc.js"></script>*@
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    @*<script src="~/Scripts/jquery.validate.js"></script>*@
+    @*<script src="~/Content/vendor/jquery.steps/build/jquery.steps.js"></script>*@
+    @*<script src="~/Scripts/Wizard.js"></script>*@
+    <!-- DEMO-->
+    @*<script src="~/Scripts/demo/demo-flot.js"></script>*@
+    <script src="~/Scripts/Chart.js"></script>
+    <!-- =============== APP SCRIPTS ===============-->
+    <script src="~/Scripts/app.js"></script>
+    <script src="~/Scripts/common.js"></script>
+
+    @*<script src="~/Scripts/angular.js"></script>
+        <script src="~/Scripts/AngularFiles/app.js"></script>
+        <script src="~/Scripts/validate.unobtrusive.js"></script>
+        <script src="~/Scripts/angular-animate.js"></script>
+        <script src="~/Scripts/angular-messages.js"></script>
+        <script src="~/Scripts/angular-touch.js"></script>*@
+    @*<script src="~/Scripts/angular-ui/ui-bootstrap.js"></script>*@
+    @*<script src="~/Scripts/angular-ui/ui-bootstrap-tpls.js"></script>*@
+    @*<script src="~/Scripts/angular-sanitize.js"></script>*@
+    <!-- ngDialog -->
+    @*<script src="~/Content/vendor/ngDialog/js/ngDialog.min.js"></script>
+
+        <script src="~/Scripts/AngularFiles/ngUserController.js"></script>
+        <script src="~/Scripts/AngularFiles/ngLookupController.js"></script>
+        <script src="~/Scripts/AngularFiles/ngLibraryController.js"></script>*@
+
+    @*<script type="text/javascript">
+            if (typeof angular == 'undefined') {
+                alert("BINGO");
+            }
+        </script>*@
+
+
+
+
+    <script src="/Scripts/jQuery.FileUpload/vendor/jquery.ui.widget.js"></script>
+    <script src="/Scripts/jQuery.FileUpload/tmpl.min.js"></script>
+    <script src="/Scripts/jQuery.FileUpload/load-image.all.min.js"></script>
+    <script src="/Scripts/jQuery.FileUpload/canvas-to-blob.min.js"></script>
+    <script src="/Scripts/jQuery.FileUpload/jquery.iframe-transport.js"></script>
+    <script src="/Scripts/jQuery.FileUpload/jquery.fileupload.js"></script>
+    <script src="/Scripts/jQuery.FileUpload/jquery.fileupload-process.js"></script>
+    <script src="/Scripts/jQuery.FileUpload/jquery.fileupload-image.js"></script>
+    <script src="/Scripts/jQuery.FileUpload/jquery.fileupload-audio.js"></script>
+    <script src="/Scripts/jQuery.FileUpload/jquery.fileupload-video.js"></script>
+    <script src="/Scripts/jQuery.FileUpload/jquery.fileupload-validate.js"></script>
+    <script src="/Scripts/jQuery.FileUpload/jquery.fileupload-ui.js"></script>
+    <script src="/Scripts/blueimp-gallery2/js/blueimp-gallery.js"></script>
+    <script src="/Scripts/blueimp-gallery2/js/blueimp-gallery-video.js"></script>
+    <script src="/Scripts/blueimp-gallery2/js/blueimp-gallery-indicator.js"></script>
+    <script src="/Scripts/blueimp-gallery2/js/jquery.blueimp-gallery.js"></script>
+
+    <script src="~/Content/vendor/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="~/Content/vendor/sweetalert/dist/sweetalert-dev.js"></script>
+
+
+
+
+    @*<link rel="stylesheet" type="text/css" href="~/Content/DataTables/css/jquery.dataTables.min.css" />*@
+    <link href="~/Content/DataTables/css/dataTables.bootstrap4.css" rel="stylesheet" />
+    <script src="~/scripts/DataTables/jquery.dataTables.js"></script>
+    <script src="~/Scripts/DataTables/dataTables.bootstrap4.js"></script>
+    @*<script src="~/Scripts/DataTables/dataTables.responsive.js"></script>
+        <script src="~/Scripts/DataTables/responsive.bootstrap4.js"></script>*@
+
+
+
+
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+            //$('#librarylist').dataTable();
+            //$("#datepicker").datepicker();
+        });
+    </script>
+
+    <!--SWEET ALERT TAB ISSUE WORKAROUND ADDED TO PREVENT A SCENARIO WHERE TAB KEY STOPS WORKING AFTER SWAL IS CALLED-->
+    <script>
+        (function () {
+            var _swal = window.swal;
+            window.swal = function () {
+                var previousWindowKeyDown = window.onkeydown;
+                _swal.apply(this, Array.prototype.slice.call(arguments, 0));
+                window.onkeydown = previousWindowKeyDown;
+            };
+        })();
+    </script>
+    <script type="text/javascript">
+    $(function () {
+        $(document).ajaxError(function (e, xhr, settings) {
+            if (xhr.status == 401) {
+                location = '@Url.Action("Login", "Authentication")';
+            }
+        });
+    });
+    </script>
+    @if (Request.IsAuthenticated)
+    {
+        @*<script>
+                $(document).ready(function () {
+                    LoadUserInfo(@((User as CustomPrincipal).Id));
+                });
+            </script>*@
+    }
+
+    <div style="display: none; position: absolute; background: rgb(255, 255, 255) none repeat scroll 0% 0%; z-index: 1040; padding: 0.4em 0.6em; border-radius: 0.5em; font-size: 0.8em; border: 1px solid rgb(17, 17, 17); white-space: nowrap;" class="flotTip"></div>
+
+
+    @RenderSection("modals", required: false)
+</body>
+</html>

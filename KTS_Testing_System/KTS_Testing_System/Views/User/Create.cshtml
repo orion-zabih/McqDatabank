@@ -1,0 +1,159 @@
+﻿@model KTS_Testing_System.ViewModel.UserVM
+@using KTS_Testing_System.Extensions
+@*@using RTS_DATA_ACCESS
+    @using KTS_Testing_System.Classes*@
+@{
+    ViewBag.Title = "Create";
+}
+
+
+@using (Html.BeginForm("Create", "User", FormMethod.Post, new { id = "userForm", autocomplete = "off" }))
+{
+
+    @Html.AntiForgeryToken()
+    if (!ViewData.ModelState.IsValid)
+    {
+        <div class="msg-block alert alert-danger alert-dismissible" role="alert" style="margin:10px;">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            @Html.ValidationSummary(true, "")
+        </div>
+    }
+    <div class="row panel-heading bg-system">
+        New Management User
+       
+        @*@Html.HiddenFor(m => m.prStatus)*@
+        
+        <div class="floatright">
+            <div class="col-md-12">
+                <input value="Create" name="processingStatus" id="processingStatus" onclick="submitUserOnClick(this)" class="btn btn-bg-system" type="button">
+                @*<input type="submit" value="Create" id="btnCreateUser" class="btn btn-bg-system" />*@
+                @Html.ActionLink("Back To List", "Index", "User", null, htmlAttributes: new { @class = "btn btn-bg-system" })
+            </div>
+        </div>
+    </div>
+
+
+    <div>
+
+        <div class="row top-spacing">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    User Details
+                </div>
+
+                <div class="panel-body">
+
+                    @Html.PartialFor(m=>m.User, "UserDetails")
+
+                    @*@Html.Partial("UserElections", Model)*@
+
+
+                </div>
+            </div>
+
+        </div>
+        @*<div class="row top-spacing">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                User Contact Data
+            </div>
+
+            <div class="panel-body">
+                @Html.PartialFor(m => m.User, "UserContactData")
+
+            </div>
+        </div>
+    </div>
+    <div class="row top-spacing">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Levels
+            </div>
+            <div class="panel-body">
+
+                <div role="tabpanel" id="LocationsPanel">
+
+                    @Html.Partial("LocationsPanel", Model)
+
+                </div>
+
+            </div>
+        </div>
+    </div>*@
+        <div class="row top-spacing">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Roles
+                </div>
+                <div class="panel-body">
+
+                    <div role="tabpanel" id="RolesPanel">
+
+                        @Html.Partial("RolesPanel", Model)
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        @*<div class="row top-spacing">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    User Allowed Elections
+                </div>
+
+                <div class="panel-body">
+
+                    @Html.PartialFor(m => m, "ElectionsPanel")
+
+                </div>
+            </div>
+        </div>*@
+
+        @*<div class="row top-spacing">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    User Allowed Election Events
+                </div>
+
+                <div class="panel-body" id="ElectionsPanel">
+
+                    @Html.PartialFor(m => m, "ElectionsPanel")
+
+
+                </div>
+            </div>
+        </div>
+        <div class="row top-spacing">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Constituencies
+                </div>
+                <div class="panel-body">
+
+                    <div role="tabpanel" id="ConstituencyPanel">
+
+                        @Html.Partial("ConstituencyPanel", Model)
+
+                    </div>
+
+                </div>
+            </div>
+        </div>*@
+    
+    
+    </div>
+
+}
+
+@section scripts
+{
+    
+<script src="~/Scripts/ViewScripts/User_Scripts.js"></script>
+    @if (Model != null && !string.IsNullOrEmpty(Model.MessageDescription))
+    {
+        <script> sweetAlert("", "@Model.MessageDescription", "error"); </script>
+    }
+
+
+}

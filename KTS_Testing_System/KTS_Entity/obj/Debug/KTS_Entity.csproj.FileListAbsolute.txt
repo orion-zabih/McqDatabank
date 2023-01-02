@@ -1,0 +1,22 @@
+C:\D drive data\Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\bin\Debug\KTS_Entity.dll.config
+C:\D drive data\Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\bin\Debug\KTS_Entity.dll
+C:\D drive data\Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\bin\Debug\KTS_Entity.pdb
+C:\D drive data\Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\bin\Debug\EntityFramework.dll
+C:\D drive data\Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\bin\Debug\EntityFramework.SqlServer.dll
+C:\D drive data\Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\bin\Debug\EntityFramework.xml
+C:\D drive data\Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\bin\Debug\EntityFramework.SqlServer.xml
+C:\D drive data\Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\obj\Debug\KTS_Entity.csprojResolveAssemblyReference.cache
+C:\D drive data\Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\obj\Debug\KTS_Entity.dll
+C:\D drive data\Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\obj\Debug\KTS_Entity.pdb
+C:\D drive data\My Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\bin\Debug\KTS_Entity.dll.config
+C:\D drive data\My Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\bin\Debug\KTS_Entity.dll
+C:\D drive data\My Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\bin\Debug\KTS_Entity.pdb
+C:\D drive data\My Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\bin\Debug\EntityFramework.dll
+C:\D drive data\My Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\bin\Debug\EntityFramework.SqlServer.dll
+C:\D drive data\My Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\bin\Debug\EntityFramework.xml
+C:\D drive data\My Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\bin\Debug\EntityFramework.SqlServer.xml
+C:\D drive data\My Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\obj\Debug\KTS_Entity.csproj.AssemblyReference.cache
+C:\D drive data\My Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\obj\Debug\KTS_Entity.csproj.CoreCompileInputs.cache
+C:\D drive data\My Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\obj\Debug\KTS_Entity.csproj.CopyComplete
+C:\D drive data\My Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\obj\Debug\KTS_Entity.dll
+C:\D drive data\My Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\obj\Debug\KTS_Entity.pdb

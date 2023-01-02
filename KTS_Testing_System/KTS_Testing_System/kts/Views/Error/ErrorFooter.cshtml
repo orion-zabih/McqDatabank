@@ -1,0 +1,27 @@
+﻿@model KTS_Testing_System.ViewModel.CustomErrorVM
+
+<ul class="list-inline text-center text-sm mb-xl">
+    <li>
+        <a href="~/Home/Index" class="text-muted">Go to Home</a>
+    </li>
+    @*<li class="text-muted">|</li>
+        <li>
+            <a href="#" class="text-muted">Register</a>
+        </li>*@
+    @if (Model!=null && !string.IsNullOrEmpty(Model.ReturnURL))
+    {
+        <li class="text-muted">|</li>
+        <li>
+            <a href="@Model.ReturnURL" class="text-muted">Go Back</a>
+        </li>
+    }
+   
+</ul>
+@*<div class="p-lg text-center">
+        <span>&copy;</span>
+        <span>@DateTime.Now.Year</span>
+        <span>-</span>
+        <span>KTS</span>
+        <br>
+        <span>Election Commission of Pakistan</span>
+    </div>*@

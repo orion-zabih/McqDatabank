@@ -1,0 +1,11 @@
+D:\Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\obj\Release\KTS_Entity.csproj.CoreCompileInputs.cache
+D:\Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\bin\Release\KTS_Entity.dll.config
+D:\Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\bin\Release\KTS_Entity.dll
+D:\Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\bin\Release\KTS_Entity.pdb
+D:\Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\bin\Release\EntityFramework.dll
+D:\Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\bin\Release\EntityFramework.SqlServer.dll
+D:\Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\bin\Release\EntityFramework.xml
+D:\Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\bin\Release\EntityFramework.SqlServer.xml
+D:\Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\obj\Release\KTS_Entity.dll
+D:\Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\obj\Release\KTS_Entity.pdb
+D:\Projects\KMC_Testing_System\KTS_Testing_System\KTS_Entity\obj\Release\KTS_Entity.csprojResolveAssemblyReference.cache

@@ -1,0 +1,19 @@
+
+--------BEGIN ERROR LOG ON: 1/14/2019 11:53:15 AM-------------------------------------------------
+--------CONTROLLER/ACTION: General/HttpError404
+--------MESSAGE: The controller for path '/Shared/TopNavbar' was not found or does not implement IController.
+--------STACK TRACE:    at System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)
+   at System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)
+   at System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController& controller, IControllerFactory& factory)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)
+   at System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--------END OF ERROR LOG-------------------------------------------------------------------------
+
+--------BEGIN ERROR LOG ON: 1/14/2019 12:02:07 PM-------------------------------------------------
+--------CONTROLLER/ACTION: User/Edit:Page Called
+--------MESSAGE: Invalid Edit User Request
+--------STACK TRACE:    at KTS_Testing_System.Controllers.UserController.Edit(String id) in D:\Projects\KMC_Testing_System\KTS_Testing_System\KTS_Testing_System\Controllers\UserController.cs:line 463
+--------END OF ERROR LOG-------------------------------------------------------------------------

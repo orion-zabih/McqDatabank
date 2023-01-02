@@ -1,0 +1,102 @@
+﻿@model KTS_Testing_System.ViewModel.TestVersionsIndexVM
+@using KTS_Testing_System.Classes
+
+@{
+    ViewBag.Title = "ViewTestVersion";
+}
+
+<div class="row panel-heading bg-system">
+    Test Versions
+
+    @*@Html.HiddenFor(m => m.prStatus)*@
+
+    <div class="floatright">
+        <div class="col-md-12">
+            <a href="/Tests/IndexVersions/@Model.test_id" class="btn btn-bg-system">Back to List</a>
+            <a class="btn btn-bg-system" href="/Tests/ViewTestVersionReport?id=@Model.test_id&version=@Model.version_number" type="button">Print</a>
+            <a class="btn btn-bg-system" href="/Tests/ViewTestVersionCorrectAnsReport?id=@Model.test_id&version=@Model.version_number" type="button">Print Correct Answers</a>
+
+            @*@Html.ActionLink("Back To List", "IndexVersions", "Tests", null, htmlAttributes: new { @class = "btn btn-bg-system" })*@
+        </div>
+    </div>
+</div>
+
+
+<div>
+
+    <div class="row top-spacing">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Version Detail
+            </div>
+
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="row top-spacing">
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.test_description, "Test Detail", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+                            <div class="col-lg-10 col-md-10 col-sm-10">
+
+                                @Html.TextAreaFor(model => model.test_description, new { @class = "form-control mandatoryField", @autocomplete = "off", @maxlength = "256", @readonly = "readonly" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row top-spacing">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.version_number, "Version Number", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <input class="form-control" value="@Model.version_number of @Model.test_versions" readonly="readonly"/>
+                            </div>
+                            @Html.LabelFor(model => model.total_questions, "Total Questions", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                @Html.EditorFor(model => model.total_questions, new { htmlAttributes = new { @class = "form-control", @maxlength = "5", @readonly = "readonly" } })
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row top-spacing">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Question Order
+            </div>
+            <div class="panel-body">
+
+                <div class="table-responsive">
+                    <table id="tblTests" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th width="15%" style="text-align:center">Serial No.</th>
+                                <th width="15%" style="text-align:center">Question</th>
+                            </tr>
+                        </thead>
+                        <tbody style="text-align:center">
+                            @{
+                                foreach (var item in Model.listFilteredTestVersions.OrderBy(s => s.serial_no))
+                                {
+                                    <tr>
+                                        <td>@item.serial_no</td>
+                                        <td style="text-align:left">@item.question</td>
+                                    </tr>
+                                }
+
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

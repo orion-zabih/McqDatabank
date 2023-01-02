@@ -1,0 +1,139 @@
+﻿@model KTS_Testing_System.ViewModel.TestVM
+@using KTS_Testing_System.Classes
+
+@{
+    ViewBag.Title = "IndexVersions";
+}
+<div class="row panel-heading bg-system">
+    Test Versions
+
+    @*@Html.HiddenFor(m => m.prStatus)*@
+
+    <div class="floatright">
+        <div class="col-md-12">
+            @Html.ActionLink("Back To List", "Index", "Tests", null, htmlAttributes: new { @class = "btn btn-bg-system" })
+            <a class="btn btn-bg-system" href="/Tests/ViewTestAllVersionReport?id=@Model.Tests.test_id" type="button">Print All Versions</a>
+            <a class="btn btn-bg-system" href="/Tests/ViewTestAllVersionCorrectAnsReport?id=@Model.Tests.test_id" type="button">Print All Versions' Correct Answers</a>
+        </div>
+    </div>
+</div>
+
+
+<div>
+
+    <div class="row top-spacing">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Test Detail
+            </div>
+
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="row top-spacing">
+                        <div class="form-group">
+
+                            @Html.LabelFor(model => model.Tests.description, "Test Detail", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+                            <div class="col-lg-10 col-md-10 col-sm-10">
+
+                                @Html.TextAreaFor(model => model.Tests.description, new { @class = "form-control mandatoryField", @autocomplete = "off", @maxlength = "256", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(model => model.Tests.description, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row top-spacing">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Tests.question_level_id, "Level", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                @Html.DropDownListFor(model => model.Tests.question_level_id, Lookup.GetLevels(), "-- Select Level --", new { @class = "ddlProjectvalue form-control mandatoryField", @disabled="disabled" })
+                                @Html.ValidationMessageFor(model => model.Tests.question_level_id, "", new { @class = "text-danger" })
+                            </div>
+                            @Html.LabelFor(model => model.Tests.total_time_minutes, "Total Time in Minutes", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                @Html.EditorFor(model => model.Tests.total_time_minutes, new { htmlAttributes = new { @class = "form-control", @maxlength = "128", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.Tests.total_time_minutes, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row top-spacing">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Tests.total_marks, "Total Marks", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                @Html.EditorFor(model => model.Tests.total_marks, new { htmlAttributes = new { @class = "form-control", @maxlength = "5", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.Tests.total_marks, "", new { @class = "text-danger" })
+                            </div>
+                            @Html.LabelFor(model => model.Tests.test_versions, "Test Versions", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                @Html.EditorFor(model => model.Tests.test_versions, new { htmlAttributes = new { @class = "form-control", @maxlength = "3", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.Tests.test_versions, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row top-spacing">
+                        <div class="form-group">
+                            @*@Html.LabelFor(model => model.TotalTestQuestions, "Total Questions", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                @Html.EditorFor(model => model.TotalTestQuestions, new { htmlAttributes = new { @class = "form-control", @maxlength = "3", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.TotalTestQuestions, "", new { @class = "text-danger" })
+                            </div>*@
+                            @Html.LabelFor(model => model.Tests.total_questions, "Selected Questions", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                @Html.EditorFor(model => model.Tests.total_questions, new { htmlAttributes = new { @class = "form-control", @maxlength = "3", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.Tests.total_questions, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+                    </div>
+                   
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row top-spacing">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Versions
+            </div>
+            <div class="panel-body">
+
+                    <div class="table-responsive">
+                        <table id="tblTests" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th width="15%" style="text-align:center">Version No.</th>                                    
+                                    <th width="15%" style="text-align:center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody style="text-align:center">
+                                @{
+                                    for (int i = 1; i <= Model.Tests.test_versions; i++)
+                                    {
+                                        <tr>
+                                            <td>@((char)(i + 64))</td>
+                                            <td>
+                                                <div style="overflow: hidden;white-space: nowrap;">
+                                                    <a class="btn btn-bg-system" href="/Tests/ViewTestVersion?id=@Model.Tests.test_id&version=@i" type="button">View</a>
+                                                    <a class="btn btn-bg-system" href="/Tests/ViewTestVersionReport?id=@Model.Tests.test_id&version=@i" type="button">Print</a>
+                                                    <a class="btn btn-bg-system" href="/Tests/ViewTestVersionCorrectAnsReport?id=@Model.Tests.test_id&version=@i" type="button">Print Correct Answers</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+
+            </div>
+        </div>
+    </div>
+</div>

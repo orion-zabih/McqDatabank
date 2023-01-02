@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Kts_dataModelStoreContainer" CdmEntityContainer="Kts_dataEntities">
+    <EntitySetMapping Name="answer_images">
+      <EntityTypeMapping TypeName="Kts_dataModel.answer_images">
+        <MappingFragment StoreEntitySet="answer_images">
+          <ScalarProperty Name="answer_id" ColumnName="answer_id" />
+          <ScalarProperty Name="image_data" ColumnName="image_data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="answers">
+      <EntityTypeMapping TypeName="Kts_dataModel.answer">
+        <MappingFragment StoreEntitySet="answers">
+          <ScalarProperty Name="answer_id" ColumnName="answer_id" />
+          <ScalarProperty Name="question_id" ColumnName="question_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="correct_p" ColumnName="correct_p" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="Kts_dataModel.Department">
+        <MappingFragment StoreEntitySet="Departments">
+          <ScalarProperty Name="department_id" ColumnName="department_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="user_Id" ColumnName="user_Id" />
+          <ScalarProperty Name="insertion_timestamp" ColumnName="insertion_timestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="question_difficulty">
+      <EntityTypeMapping TypeName="Kts_dataModel.question_difficulty">
+        <MappingFragment StoreEntitySet="question_difficulty">
+          <ScalarProperty Name="difficulty_code" ColumnName="difficulty_code" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="question_images">
+      <EntityTypeMapping TypeName="Kts_dataModel.question_images">
+        <MappingFragment StoreEntitySet="question_images">
+          <ScalarProperty Name="question_id" ColumnName="question_id" />
+          <ScalarProperty Name="image_data" ColumnName="image_data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="question_importance">
+      <EntityTypeMapping TypeName="Kts_dataModel.question_importance">
+        <MappingFragment StoreEntitySet="question_importance">
+          <ScalarProperty Name="importance_code" ColumnName="importance_code" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="question_levels">
+      <EntityTypeMapping TypeName="Kts_dataModel.question_levels">
+        <MappingFragment StoreEntitySet="question_levels">
+          <ScalarProperty Name="level_id" ColumnName="level_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="questions">
+      <EntityTypeMapping TypeName="Kts_dataModel.question">
+        <MappingFragment StoreEntitySet="questions">
+          <ScalarProperty Name="question_id" ColumnName="question_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="subject_id" ColumnName="subject_id" />
+          <ScalarProperty Name="difficulty_code" ColumnName="difficulty_code" />
+          <ScalarProperty Name="importance_code" ColumnName="importance_code" />
+          <ScalarProperty Name="marks" ColumnName="marks" />
+          <ScalarProperty Name="question_level_id" ColumnName="question_level_id" />
+          <ScalarProperty Name="user_Id" ColumnName="user_Id" />
+          <ScalarProperty Name="insertion_timestamp" ColumnName="insertion_timestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="Kts_dataModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="subjects">
+      <EntityTypeMapping TypeName="Kts_dataModel.subject">
+        <MappingFragment StoreEntitySet="subjects">
+          <ScalarProperty Name="subject_id" ColumnName="subject_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Test_questions">
+      <EntityTypeMapping TypeName="Kts_dataModel.Test_questions">
+        <MappingFragment StoreEntitySet="Test_questions">
+          <ScalarProperty Name="test_question_id" ColumnName="test_question_id" />
+          <ScalarProperty Name="test_id" ColumnName="test_id" />
+          <ScalarProperty Name="question_id" ColumnName="question_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Test_versions">
+      <EntityTypeMapping TypeName="Kts_dataModel.Test_versions">
+        <MappingFragment StoreEntitySet="Test_versions">
+          <ScalarProperty Name="test_id" ColumnName="test_id" />
+          <ScalarProperty Name="test_version_id" ColumnName="test_version_id" />
+          <ScalarProperty Name="version_number" ColumnName="version_number" />
+          <ScalarProperty Name="test_question_id" ColumnName="test_question_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Tests">
+      <EntityTypeMapping TypeName="Kts_dataModel.User_Tests">
+        <MappingFragment StoreEntitySet="User_Tests">
+          <ScalarProperty Name="question_level_id" ColumnName="question_level_id" />
+          <ScalarProperty Name="total_marks" ColumnName="total_marks" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="test_id" ColumnName="test_id" />
+          <ScalarProperty Name="total_questions" ColumnName="total_questions" />
+          <ScalarProperty Name="total_time_minutes" ColumnName="total_time_minutes" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="test_versions" ColumnName="test_versions" />
+          <ScalarProperty Name="test_creator" ColumnName="test_creator" />
+          <ScalarProperty Name="user_Id" ColumnName="user_Id" />
+          <ScalarProperty Name="insertion_timestamp" ColumnName="insertion_timestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="Kts_dataModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="designation" ColumnName="designation" />
+          <ScalarProperty Name="user_Id" ColumnName="user_Id" />
+          <ScalarProperty Name="first_names" ColumnName="first_names" />
+          <ScalarProperty Name="last_name" ColumnName="last_name" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="parent_department_id" ColumnName="parent_department_id" />
+          <ScalarProperty Name="creation_user_id" ColumnName="creation_user_id" />
+          <ScalarProperty Name="insertion_timestamp" ColumnName="insertion_timestamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="user_role_map" TypeName="Kts_dataModel.user_role_map" StoreEntitySet="user_role_map">
+      <EndProperty Name="Roles">
+        <ScalarProperty Name="role_id" ColumnName="role_id" />
+      </EndProperty>
+      <EndProperty Name="Users">
+        <ScalarProperty Name="user_Id" ColumnName="user_id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="subject_difficulty_importance">
+      <EntityTypeMapping TypeName="Kts_dataModel.subject_difficulty_importance">
+        <MappingFragment StoreEntitySet="subject_difficulty_importance">
+          <ScalarProperty Name="no_of_questions" ColumnName="no_of_questions" />
+          <ScalarProperty Name="importance_code" ColumnName="importance_code" />
+          <ScalarProperty Name="test_subject_difficulty_id" ColumnName="test_subject_difficulty_id" />
+          <ScalarProperty Name="difficulty_importance_id" ColumnName="difficulty_importance_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="test_subjects_difficulty">
+      <EntityTypeMapping TypeName="Kts_dataModel.test_subjects_difficulty">
+        <MappingFragment StoreEntitySet="test_subjects_difficulty">
+          <ScalarProperty Name="no_of_questions" ColumnName="no_of_questions" />
+          <ScalarProperty Name="difficulty_code" ColumnName="difficulty_code" />
+          <ScalarProperty Name="user_test_subject_id" ColumnName="user_test_subject_id" />
+          <ScalarProperty Name="test_subject_difficulty_id" ColumnName="test_subject_difficulty_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_test_subjects">
+      <EntityTypeMapping TypeName="Kts_dataModel.user_test_subjects">
+        <MappingFragment StoreEntitySet="user_test_subjects">
+          <ScalarProperty Name="no_of_questions" ColumnName="no_of_questions" />
+          <ScalarProperty Name="subject_id" ColumnName="subject_id" />
+          <ScalarProperty Name="test_id" ColumnName="test_id" />
+          <ScalarProperty Name="user_test_subject_id" ColumnName="user_test_subject_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,46 @@
+﻿@model KTS_Testing_System.ViewModel.CustomErrorVM
+@using KTS_Testing_System.Classes
+
+@{
+    ViewBag.Title = "CustomError";
+}
+
+
+<div class="abs-center" style="height:50%;left:10%;position:fixed">
+    <!-- START panel-->
+    <div class="text-center mb-xl">
+
+        @if (Model.Type == Constants.MESSAGE_TYPE.WARNING)
+        {
+            <em class="fa fa-warning fa-10x text-warning"></em>
+        }
+        else if (Model.Type == Constants.MESSAGE_TYPE.ERROR)
+        {
+            <em class="fa fa-warning fa-10x text-danger"></em>
+        }
+        else if (Model.Type == Constants.MESSAGE_TYPE.INFO)
+        {
+            <em class="fa fa-info-circle fa-10x text-primary"></em>
+        }
+
+
+        <div class="text-lg mb-lg">
+            @if (Model.Type == Constants.MESSAGE_TYPE.WARNING)
+            {
+                @:Warning
+            }
+            else if (Model.Type == Constants.MESSAGE_TYPE.ERROR)
+            {
+                @:Error
+            }
+            else if (Model.Type == Constants.MESSAGE_TYPE.INFO)
+            {
+                @:Information
+            }
+        </div>
+        <p class="lead m0">@Model.Title</p>
+        <p>@Model.Message</p>
+    </div>
+    @Html.Partial("../Error/ErrorFooter")
+</div>
+

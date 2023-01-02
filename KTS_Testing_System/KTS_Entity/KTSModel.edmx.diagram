@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6147f6f4789d4048b4a78c797fe97e0b" Name="Diagram1">
+        <EntityTypeShape EntityType="Kts_dataModel.answer_images" Width="1.5" PointX="9.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Kts_dataModel.answer" Width="1.5" PointX="7.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Kts_dataModel.Department" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Kts_dataModel.question_difficulty" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Kts_dataModel.question_images" Width="1.5" PointX="7.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Kts_dataModel.question_importance" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Kts_dataModel.question_levels" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Kts_dataModel.question" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Kts_dataModel.Role" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Kts_dataModel.subject" Width="1.5" PointX="3" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Kts_dataModel.Test_questions" Width="1.5" PointX="7.5" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Kts_dataModel.Test_versions" Width="1.5" PointX="9.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Kts_dataModel.User_Tests" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Kts_dataModel.User" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <AssociationConnector Association="Kts_dataModel.FK__answer_im__answe__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="Kts_dataModel.FK__answers__questio__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="Kts_dataModel.FK__Users__parent_de__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="Kts_dataModel.FK__questions__diffi__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="Kts_dataModel.FK__question___quest__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="Kts_dataModel.FK__questions__impor__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="Kts_dataModel.FK__questions__quest__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="Kts_dataModel.FK__questions__subje__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="Kts_dataModel.FK__questions__user___403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="Kts_dataModel.FK__Test_ques__quest__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="Kts_dataModel.FK__Test_ques__test___534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="Kts_dataModel.FK__Test_vers__test___571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="Kts_dataModel.FK__User_Test__user___4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="Kts_dataModel.user_role_map" ManuallyRouted="false" />
+        <AssociationConnector Association="Kts_dataModel.FK__User_Test__quest__49C3F6B7" />
+        <EntityTypeShape EntityType="Kts_dataModel.subject_difficulty_importance" Width="1.5" PointX="15" PointY="4.875" />
+        <EntityTypeShape EntityType="Kts_dataModel.test_subjects_difficulty" Width="1.5" PointX="12.75" PointY="8.875" />
+        <EntityTypeShape EntityType="Kts_dataModel.user_test_subjects" Width="1.5" PointX="7.5" PointY="14.375" />
+        <AssociationConnector Association="Kts_dataModel.FK__test_subj__diffi__656C112C" />
+        <AssociationConnector Association="Kts_dataModel.FK__subject_d__impor__6A30C649" />
+        <AssociationConnector Association="Kts_dataModel.FK__subject_d__test___693CA210" />
+        <AssociationConnector Association="Kts_dataModel.FK__user_test__subje__60A75C0F" />
+        <AssociationConnector Association="Kts_dataModel.FK__test_subj__user___6477ECF3" />
+        <AssociationConnector Association="Kts_dataModel.FK__user_test__test___5FB337D6" />
+        <AssociationConnector Association="Kts_dataModel.FK__Test_vers__test___6C190EBB" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

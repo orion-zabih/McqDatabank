@@ -1,0 +1,32 @@
+﻿@model KTS_Testing_System.ViewModel.UserVM
+@using KTS_Testing_System.Classes     
+
+    @if (Model.Roles.Any())
+    {
+        <div class="" style="margin-bottom:0px;">
+        
+            <div class="panel-body">
+                @foreach (var role in Model.Roles.OrderBy(g => g.description))
+                {
+                    
+                        var check_val = false;
+
+                        if (Model.SelectedRoles != null && Model.SelectedRoles.Contains(role.role_id.ToString()))
+                        {
+                            check_val = true;
+                        }
+                        <div class="col-md-3">
+                            <div class="checkbox c-checkbox " style="margin:5px;">
+                                <label>
+                                    <input class="check-box" data-val="true" id="SelectedRoles" value="@role.role_id" name="SelectedRoles" type="checkbox" checked="@check_val">
+                                    <span class="fa fa-check"></span>@Utility.ToTitlecase(@role.description)
+                                </label>
+                            </div>
+                        </div>
+                        continue;
+                }
+            </div>
+        </div>
+    }
+
+

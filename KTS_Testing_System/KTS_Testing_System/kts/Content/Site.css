@@ -1,0 +1,626 @@
+﻿/*
+<body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+ Set padding to keep content from hitting the edges 
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+ Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+ Set width on the form input elements since they're 100% wide by default 
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+ */
+
+.panel-headingModified{
+    background-color: #fafafa;
+    border: 1px solid #eee;
+    font-size: 17px;
+    color: #4d4f51;
+    border-color: #cfdbe2;
+    padding: 7px 10px;
+}
+
+.panel-success {
+    border-color: #dde6e9;
+padding: 14px 0px 0px 0px;
+margin: 5px 2px;
+/*border-top: 3px solid #c2d6d6;*/
+}
+
+.floatright{
+    float:right;
+}
+
+.floatleft{
+    float:left;
+}
+
+.thumb {
+    height: 75px;
+    margin: 10px 5px 0 0;
+    border: 3px solid rgb(238, 238, 238); padding: 10px;
+  }
+.thumb:hover
+{
+    cursor:pointer;
+}
+.rowModified {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.fontlighter{
+     font-weight: lighter;
+}   
+.fontsize14{
+     font-size: 14px;
+}   
+.fontsize18 {
+    font-size: 18px;
+}
+
+.UserHeaders{
+    background-color: #37bc9b;
+    color: #fff!important;
+}
+
+.CandidateNominationHeaders{
+    background-color: #ffd800;
+    color: #fff!important;
+}
+
+input, textarea, keygen, select, button {
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em 0em 0em 0em;
+    font: 14px Arial;
+}
+/*------------------------------------------*/
+/*############################*/
+.margin10 {
+    margin:10px;
+}
+
+.marginRight10 input {
+    margin-right:10px;
+}
+/*##########################################*/
+/*------------------------------------------*/
+/*############# Polling Venue ###############*/
+.bg-green{
+    /*font-size:24px;*/
+    /*background-color: #fafbfc;*/
+        background-color: #74bc9b;
+    border-bottom: 1px solid #cfdbe2;
+    /*font-weight:bold;*/
+    color: white !important;
+}
+
+.btn-bg-green{
+    color: #fff;
+    background-color: #37bc9b;
+    border: 1px solid;
+}
+
+.btn-bg-green:hover{
+    color: #37bc9b;
+    background-color: #fff;   
+    font-weight:bold; 
+}
+
+.verticalStrip-bgGreen{
+    border-left: 5px solid #37bc9b;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 20px 20px 15px 11px;
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba(152, 152, 142, 0.26);
+}
+/*##########################################*/
+
+label{
+    font-weight:lighter;
+        padding-top: 5px;
+        /*font-size: 16px*/
+}
+
+.labelbold{
+    font-weight:bold;
+        padding-top: 5px;
+}
+
+body, .wrapper > section {
+    background-color: #f5f7fa;
+}
+/*------------------------------------------*/
+
+
+
+/*------------------------------------------*/
+/*############  SYSTEM  ##########*/
+.bg-system{
+    font-size: 24px;
+    background-color: #e1eef2;
+    /*color: #7f807b !important;*/
+    /*font-weight: bold;*/
+    padding: 20px 20px;
+    border-bottom: 1px solid #b8babc;
+
+    background: url(../../Content/images/innerbanner-2.png);
+background-repeat: no-repeat;
+background-size: 100%;
+}
+
+.btn-bg-system {
+    color: #fff;
+    background-color: #830006; /*3A3F51*/
+    /*background-color: #23b7e5;*/
+    /*border: 1px solid;*/
+}
+
+.btn-border_filled{
+    border: 2px solid;
+    box-shadow:1px;
+}
+
+.btn-bg-system:focus,
+.btn-bg-system:hover {
+    color: #3A3F51;
+    background-color: #fff;
+    /*border: 1px solid #23b7e5;*/
+    border: 1px solid #830006;
+}
+
+.verticalStrip-bgSystem {
+    /*border-left: 5px solid #23b7e5;*/
+    border-left: 5px solid #830006;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 20px 20px 15px 11px;
+    padding: 10px 15px;
+    border-bottom: 1px solid rgba(152, 152, 142, 0.26);
+}
+/*############################*/
+
+.subHeading{
+    margin: 10px;
+    background-color: aliceblue;
+    font-weight: bold;
+    padding: 10px;
+}
+
+table.dataTable thead{
+    background-color: #f2f4f7;
+}
+
+
+.validationFail{
+        border-color: #a94442;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+}
+
+
+
+/*############################
+    ///ADDED FOR WIDE SWEET ALERT MODAL*/
+        .swal-wide {
+            width: 850px !important;
+        }
+ /*############################*/
+
+ .tableDetails{
+         border: 1px solid #1797be;
+ }
+
+
+
+.panel.panel-default {
+    border-top-width: 3px;
+    margin: 0px 20px;
+}
+
+/*.table.table-hover thead{
+    background-color:lightgrey;
+}*/
+
+.panel .verticalStrip-bgSystem{
+    /*margin:0px;
+    border-bottom: 1px solid rgba(152, 152, 142, 0.26);
+    border-right: 1px solid rgba(152, 152, 142, 0.26);
+    border-top: 1px solid rgba(152, 152, 142, 0.26);*/
+}
+
+.panel .panel-collapse{
+    margin:0px;
+    /*border-left: 1px solid rgba(152, 152, 142, 0.26);
+    border-bottom: 1px solid rgba(152, 152, 142, 0.26);
+    border-right: 1px solid rgba(152, 152, 142, 0.26);*/
+}
+
+.panel{
+    
+    border: 1px solid rgba(152, 152, 142, 0.26);
+        box-shadow:0px;
+}
+
+.mandatoryField{
+    border-right: 3px solid red;
+}
+
+
+
+        /*.carousel-control {
+  position: absolute;
+  top: 150px;
+  left: -15px;
+  width: 40px;
+  height: 40px;
+  
+  font-size: 60px;
+  font-weight: 100;
+  line-height: 30px;
+  background-image: none !important;
+  filter: none !important;
+  text-align: center;
+  -webkit-border-radius: 23px;
+     -moz-border-radius: 23px;
+          border-radius: 23px;  
+}
+
+.carousel-control> .glyphicon{
+    font-size: 60px;
+    color: black;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+
+    .carousel-indicators li{
+        border:1px solid black !important;
+        
+    }*/
+
+    .chart{
+        
+        display: block; 
+    }
+    .item{
+        padding-left:30px;
+        padding-right:30px; 
+    }
+
+
+.table thead{
+        background-color: #f2f4f7;
+}
+
+.label-deleted{
+    background-color:#8E9496;
+    font-size: 13px;
+font-weight: lighter;
+}
+.panel-heading.bg-system{
+    font-weight:bolder;
+}
+
+.bs-wizard {margin-top: 40px;}
+.bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}
+.bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
+.bs-wizard > .bs-wizard-step + .bs-wizard-step {}
+/*.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #595959; font-size: 16px; margin-bottom: 5px;}
+.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 14px;}*/
+.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {font-size: 16px; margin-bottom: 5px;}
+.bs-wizard > .bs-wizard-step .bs-wizard-info {color: black; font-size: 14px; font-weight:bold}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block; background: rgba(54, 162, 235, 0.4); top: 45px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 50%;} 
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: rgba(54, 162, 235, 1); border-radius: 50px; position: absolute; top: 8px; left: 8px; } 
+.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 8px; box-shadow: none; margin: 20px 0;}
+.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background: rgba(54, 162, 235, 0.4);}
+.bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
+.bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:50%;}
+.bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:0%;}
+.bs-wizard > .bs-wizard-step:last-child.active > .progress > .progress-bar {width: 100%;}
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot {background-color: #f5f5f5;}
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot:after {opacity: 0;}
+.bs-wizard > .bs-wizard-step:first-child  > .progress {left: 50%; width: 50%;}
+.bs-wizard > .bs-wizard-step:last-child  > .progress {width: 50%;}
+.bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot{ pointer-events: none; }
+
+
+
+
+/*.bs-wizard {margin-top: 40px;}*/
+
+/*Form Wizard*/
+/*.bs-wizard {border-bottom: solid 1px #e0e0e0; padding: 0 0 10px 0;}
+.bs-wizard > .bs-wizard-step {padding: 0; position: relative;}
+.bs-wizard > .bs-wizard-step + .bs-wizard-step {}
+.bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #595959; font-size: 16px; margin-bottom: 5px;}
+.bs-wizard > .bs-wizard-step .bs-wizard-info {color: #999; font-size: 14px;}
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block; background: #fbe8aa; top: 45px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 50%;} 
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: #fbbd19; border-radius: 50px; position: absolute; top: 8px; left: 8px; } 
+.bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 8px; box-shadow: none; margin: 20px 0;}
+.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background: #fbe8aa;}
+.bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
+.bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:50%;}
+.bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:0%;}
+.bs-wizard > .bs-wizard-step:last-child.active > .progress > .progress-bar {width: 100%;}
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot {background-color: #f5f5f5;}
+.bs-wizard > .bs-wizard-step.disabled > .bs-wizard-dot:after {opacity: 0;}
+.bs-wizard > .bs-wizard-step:first-child  > .progress {left: 50%; width: 50%;}
+.bs-wizard > .bs-wizard-step:last-child  > .progress {width: 50%;}
+.bs-wizard > .bs-wizard-step.disabled a.bs-wizard-dot{ pointer-events: none; }*/
+/*END Form Wizard*/
+
+.foreColorRedBold{
+    color: red;
+    font-weight: bolder;
+}
+.foreColorGreenBold{
+    color: green;
+    font-weight: bolder;
+}
+/*Ticker Code*/
+* {
+    box-sizing: border-box;
+}
+
+@-webkit-keyframes ticker {
+    0% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        visibility: visible;
+    }
+
+    100% {
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+
+@keyframes ticker {
+    0% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        visibility: visible;
+    }
+
+    100% {
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+
+.ticker-wrap {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+    height: 4rem;
+    background-color: /*#3a3f51*/ /*rgba(189, 189, 189, 0.9)*/ rgba(255, 255, 255, 0.9);
+    padding-left: 100%;
+    box-sizing: content-box;
+}
+
+    .ticker-wrap .ticker {
+        display: inline-block;
+        height: 4rem;
+        line-height: 4rem;
+        white-space: nowrap;
+        padding-right: 100%;
+        box-sizing: content-box;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+        -webkit-animation-timing-function: linear;
+        animation-timing-function: linear;
+        -webkit-animation-name: ticker;
+        animation-name: ticker;
+        -webkit-animation-duration: 60s;
+        animation-duration: 120s;
+    }
+
+    .ticker-wrap .ticker__item {
+        display: inline-block;
+        padding: 0 1rem;
+        font-size: 2rem;
+        color: black; /*white*/
+    }
+.ticker-wrap_bigger {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+    height: 6rem;
+    background-color: /*#3a3f51*/ /*rgba(189, 189, 189, 0.9)*/ rgba(255, 255, 255, 0.9);
+    padding-left: 100%;
+    box-sizing: content-box;
+}
+
+    .ticker-wrap_bigger .ticker_bigger {
+        display: inline-block;
+        height: 4rem;
+        /*line-height: 4rem;*/
+        
+        white-space: nowrap;
+        padding-right: 100%;
+        box-sizing: content-box;
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+        -webkit-animation-timing-function: linear;
+        animation-timing-function: linear;
+        -webkit-animation-name: ticker;
+        animation-name: ticker;
+        -webkit-animation-duration: 60s;
+        animation-duration: 120s;
+    }
+
+    .ticker-wrap_bigger .ticker__item_bigger {
+        display: inline-block;
+        padding: 0 2rem;
+        font-size: 4rem;
+        color: black; /*white;*/
+    }
+body {
+    /*padding-bottom: 5rem;*/
+}
+
+h1,
+h2,
+p {
+    padding: 0 5%;
+}
+
+/*Guage Chart Div*/
+.chartwrapper {
+    height: 600px;
+    position: relative;
+}
+
+.navi {
+    margin-top: 8px;
+    font-size: 18px;
+}
+
+.naviText {
+    position: absolute;
+    line-height: 0px;
+    margin-top: 184px;
+    width: 20%
+}
+
+.chartdiv {
+    /*border: 1px solid #800;*/
+    /*for guage*/
+    width: 20%;    
+    height: 230px;
+    position: relative;
+    float: left;
+    /*for cylinder*/
+    /*width: 20%;
+    height: 230px;406
+    position: relative;
+    float: left;
+    font-size: 11px;*/
+}
+
+
+/*------------------ SLIDES CSSS ---------------------------*/
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+    position: relative;
+}
+
+/* Hide the images by default */
+.mySlides {
+    display: none;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+    cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prevSlide,
+.nextSlide {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.nextSlide {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prevSlide:hover,
+    .nextSlide:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+/* Number text (1/3 etc) */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+    text-align: center;
+    background-color: #222;
+    padding: 2px 16px;
+    color: white;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Six columns side by side */
+.column {
+    float: left;
+    /*width: 16.66%;*/
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+    opacity: 0.6;
+    height: 130px;
+}
+
+    .active,
+    .demo:hover {
+        opacity: 1;
+    }
+tr.row_highlighted td {
+    background-color: #BBC5C3 !important;
+}
+.btntabs {
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 0px;
+    margin: 1px;
+}
+.btntabs.inactive {
+    cursor: pointer;
+    opacity: .65;
+    filter: alpha(opacity=65);
+    box-shadow: none
+}
+/*-------------------------------------------------*/

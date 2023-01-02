@@ -1,0 +1,30 @@
+﻿<div class="abs-center wd-xl" style="height:50%;left:10%;position:fixed">
+    <!-- START panel-->
+    <div class="text-center mb-xl">
+        <div class="mb-lg">
+            <em class="fa fa-wrench fa-10x text-muted"></em>
+        </div>
+        <div class="text-lg mb-lg">General Error</div>
+        <p class="lead m0">Something went wrong</p>
+        <p>Don't worry, we're now checking this.</p>
+        <p>In the meantime, please try one of those links below or come back in a moment</p>
+    </div>
+    @Html.Partial("../Error/ErrorFooter")
+</div>
+
+
+@*
+model System.Web.Mvc.ExceptionContext
+<div class="abs-center wd-xl">
+    <br /><br /><br />
+    <!-- START panel-->
+    <div class="text-center mb-xl">
+        <div class="text-lg mb-lg">General Error</div>
+        <br /><br />
+        <p class="lead m0">@Model</p>
+        <p>If the problem persists, please contact system administrator.</p>
+    </div>
+    @Html.Partial("../Error/ErrorFooter")
+
+</div>
+*@

@@ -1,0 +1,162 @@
+﻿
+@using KTS_Testing_System.Classes
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="row panel-heading bg-system">
+    Test Management
+
+    <div class="floatright">
+        <div class="col-md-12">
+
+            @Html.ActionLink("Create New Test", "Create", "Tests", null, htmlAttributes: new { @class = "btn btn-bg-system" })
+
+        </div>
+    </div>
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <label>Test Management</label>
+        </h4>
+    </div>
+    <!-- START table-responsive-->
+    <div class="table-responsive">
+        <table id="tblTests" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th width="15%" style="text-align:center">S.No</th>
+                    <th width="15%" style="text-align:center">Description</th>
+                    <th width="15%" style="text-align:center">Level</th>
+                    <th width="15%" style="text-align:center">Test Creator</th>
+                    <th width="15%" style="text-align:center">Total Questions</th>
+                    <th width="15%" style="text-align:center">Total Marks</th>
+                    <th width="15%" style="text-align:center">Time Allowed in Mins</th>
+                    <th width="15%" style="text-align:center">Insertion Date</th>
+                    <th width="15%" style="text-align:center">Status</th>
+                    <th width="15%" style="text-align:center">Action</th>
+
+                </tr>
+            </thead>
+            <tbody style="text-align:center"></tbody>           
+        </table>
+
+    </div>
+    <!-- END table-responsive-->
+    <div class="panel-footer">   
+    </div>
+</div>
+
+
+
+
+@section scripts
+{
+    <script>
+                    var columns;
+                   // var formID = $('#FormId').val();
+                    $(document).ready(function () {
+                        columns = [
+                            { "title": "S.No", "data": "serial_no", "searchable": true },                           
+                            { "title": "Description", "data": "description", "searchable": true },
+                            { "title": "Level", "data": "level", "searchable": true },
+                            { "title": "Test Creator", "data": "test_creator", "searchable": true },
+                            { "title": "Total Questions", "data": "total_questions", "searchable": true },
+                            { "title": "Total Marks", "data": "total_marks", "searchable": true },
+                            { "title": "Time Allowed in Mins", "data": "total_time_minutes", "searchable": true },
+                            //{ "title": "Status", "data": "status", "searchable": true },
+                            { "title": "Insertion Date", "data": "insertion_timestamp_string", "searchable": true }
+                        ];
+                        columns.push({
+                            "title": "Status", "render": function (data, type, full, meta) {
+                                var buttons = '';
+                                if (full.status == "ready")
+                                    buttons = '<Label type="button" id="btnPS"  class="btn btn-oval  btn-success" style="width:90%"  > ' + 'Ready' + ' </Label>';
+                                else if (full.status == "draft")
+                                    buttons = '<Label type="button" id="btnPS"  class="btn btn-oval  btn-warning" style="width:90%"  > ' + 'Draft' + ' </Label>';                                    
+                                else if (full.status == "deleted")
+                                    buttons = '<Label type="button" id="btnPS"  class="btn btn-oval  btn-danger" style="width:90%"  > ' + ' Deleted ' + ' </Label>';
+                                return buttons;
+                            }
+                        });
+                        columns.push({
+                            "title": "Action", "data": "test_id", "render": function (data, type, full, meta) {
+                                var buttons = '';
+                                if (full.status == "ready" && full.test_versions > 0 )
+                                    buttons = '<div style="overflow: hidden;white-space: nowrap;"><a class="btn btn-bg-system" href="/Tests/IndexVersions?id=' + full.test_id + '" type="button" >Test Versions</a></div>';
+                                else if (full.status == "draft")
+                                    buttons = '<div style="overflow: hidden;white-space: nowrap;"><a class="btn btn-bg-system" href="/Tests/Edit?id=' + full.test_id + '" type="button" >Edit</a></div>';                                
+                                return buttons;
+                                //return '<div style="overflow: hidden;white-space: nowrap;"><a class="btn btn-bg-system" href="/Tests/Edit?id=' + test_id + '" type="button" >Edit</a></div>';
+                            }
+                        });
+
+
+
+                        console.log(columns);
+
+                        var table = $('#tblTests').DataTable({
+                            "processing": true,
+                            "serverSide": true,
+                            //"order": [[1, "asc"]],
+                            "rowId": 'test_id',
+                            "columnDefs": [{
+                                "targets": [0,7,9], "searchable": false, "orderable": false, "visible": true,
+
+                            }
+                            ],
+                            "ajax": {
+                                "url": "/Tests/GetIndex",
+                                "type": "POST",
+                                "dataType": "json",
+                                "data": function (d) {
+                                    return $.extend({}, d, {
+                                        //"id": formID
+                                    });
+                                }
+
+                            },
+                            "columns": columns
+                        });
+
+                    });
+
+
+    </script>
+    <script>
+                //$('#article-editor').modal('show');
+
+
+                //$(document).ready(function () {
+                //    $('#tblTests').dataTable()
+                //});
+    </script>
+
+
+
+}
+
+@if (!string.IsNullOrEmpty(Model.MessageTitle))
+{
+    <script src="~/Content/vendor/sweetalert/dist/sweetalert.min.js"></script>
+            <script type="text/javascript"></script>
+    if (Model.MessageTitle == "Success")
+    {
+        <script>
+
+                    swal('@Model.MessageTitle', '@Model.MessageDescription','success');
+        </script>
+    }
+    else
+    {
+        <script>
+
+                    swal('@Model.MessageTitle', '@Model.MessageDescription','error');
+        </script>
+
+    }
+}

@@ -1,0 +1,147 @@
+﻿@using KTS_Testing_System.Models
+@using KTS_Testing_System.Classes
+
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+@section styles
+{
+    <style>
+    </style>
+}
+@if (HttpContext.Current.User != null && HttpContext.Current.User.Identity.IsAuthenticated)
+{
+    Response.Redirect(Url.Action("Index", "Home"));
+}
+
+else
+{
+    
+
+    <div class="row">
+        @*<div class="panel panel-dark panel-flat">
+                <div class="panel-heading text-center">
+                    <a href="#" style="text-align:center;">
+                        <img src="~/Content/images/headerb-new.png" style="width:100%" alt="Image" class="block-center img-rounded">
+                    </a>
+                </div>
+            </div>*@
+
+        @*<img src="~/Content/images/login-bg.jpg" style="width:100%" alt="Image" class="block-center img-rounded">*@
+        <div class="col-lg-5 col-lg-offset-4" style="margin-top:180px;max-width: 720px;">
+
+            <div md-ink-ripple="md-ink-ripple" class="card animated fadeInDown anim-delay-20 md-ink-ripple">
+                <div class="" style="filter: blur(5px); height:100%;width:100%; position:absolute;overflow:hidden; background-repeat:no-repeat; ">
+                    <img src="~/Content/images/login-bg.png" style="height:100%;width:100%;" />
+                </div>
+
+                <div class="panel-body" style="text-align:center;  background-color: rgba(255, 255, 255, 0.33);">
+                    <div class="col-lg-6">
+                        <p class="lead" style="margin-bottom:0px;color:#afafaf; text-shadow: 2px 2px #8e8888; font-size:60px;">@Constants.PROJECT_TITLE_INITIALS</p>
+                        <label style="margin-bottom:20px;font-weight:bold">Welcome To @Constants.PROJECT_TITLE</label>
+
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item active" style="padding-left:0px!important;padding-right:15px!important;">
+                                    <img src="~/Content/images/sliders/slide1.jpg" alt="slide0" style="width: 100%;">
+                                </div>
+
+                                <div class="item" style="padding-left:0px!important;padding-right:15px!important;">
+                                    <img src="~/Content/images/sliders/slide2.jpg" alt="slide1" style="width: 100%;">
+                                </div>
+
+                                <div class="item" style="padding-left:0px!important;padding-right:15px!important;">
+                                    <img src="~/Content/images/sliders/slide3.jpg" alt="slide2" style="width: 100%;">
+                                </div>
+
+                                <div class="item" style="padding-left:0px!important;padding-right:15px!important;">
+                                    <img src="~/Content/images/sliders/slide4.jpg" alt="slide3" style="width: 100%;">
+                                </div>
+
+                                @*<div class="item" style="padding-left:0px!important;padding-right:15px!important;">
+                                    <img src="~/Content/images/sliders/slide5.png" alt="slide4" style="width: 100%;">
+                                </div>
+
+                                <div class="item" style="padding-left:0px!important;padding-right:15px!important;">
+                                    <img src="~/Content/images/sliders/slide6.png" alt="slide5" style="width: 100%;">
+                                </div>
+
+                                <div class="item" style="padding-left:0px!important;padding-right:15px!important;">
+                                    <img src="~/Content/images/sliders/slide7.png" alt="slide5" style="width: 100%;">
+                                </div>*@
+
+                            </div>
+                        </div>
+                        <div class="p-lg text-center">
+                            <span>&copy;</span>
+                            <span>@DateTime.Now.Year</span>
+                            <span>-</span>
+                            <span>@Constants.PROJECT_TITLE_INITIALS - version (@Utility.getAppVersion())</span>
+                            <br>
+                            <span>@Constants.PROJECT_TITLE</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 ">
+                        @*block-center*@
+                        <div class="mt-xl wd-xl" style="margin-top:0px !important; box-shadow:0 3px 1px -2px rgba(0,0,0,.14),0 2px 2px 0 rgba(0,0,0,.098),0 1px 5px 0 rgba(0,0,0,.084);">
+                            <!-- START panel-->
+                            <div class="panel panel-dark panel-flat" style="border:none!important">
+                                <div class="panel-heading text-center">
+                                    <a href="#" style="text-align:center;">
+                                        @*<img src="~/Content/images/headerb-new.png" style="width:100%" alt="Image" class="block-center img-rounded">*@
+                                        <img src="~/Content/images/kmc_logo_white.png" style="width:100%" alt="Image" class="block-center img-rounded">
+                                    </a>
+                                </div>
+                                <div class="panel-body">
+                                    <p class="text-center pv">SIGN IN TO CONTINUE.</p>
+                                    @if (!ViewData.ModelState.IsValid)
+                                    {
+                                        <div class="msg-block alert alert-danger alert-dismissible" role="alert" style="margin:10px;">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            @Html.ValidationSummary(true, "")
+                                        </div>
+                                    }
+                                    @using (Html.BeginForm("Authenticate", "Authentication", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login-form", role = "form", autocomplete = "off" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+
+                                        
+                                        <div class="form-group has-feedback">
+                                            @*<input id="txtUsername" type="text" placeholder="Enter Username" autocomplete="off" required class="form-control">*@
+                                            @Html.TextBoxFor(m => m.username, new { @class = "form-control required-field", @placeholder = "Please enter Username" })
+                                            <span class="fa icon-user form-control-feedback text-muted"></span>
+                                            @Html.ValidationMessageFor(m => m.username, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Please enter Password" })
+                                            <span class="fa icon-lock form-control-feedback text-muted"></span>
+                                        </div>
+                                        <div class="clearfix">
+                                            <div class="checkbox c-checkbox pull-left mt0">
+                                               
+                                            </div>
+                                            <div class="pull-right">
+                                                
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-block btn-bg-system mt-lg">Login</button>
+                                    }
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+}

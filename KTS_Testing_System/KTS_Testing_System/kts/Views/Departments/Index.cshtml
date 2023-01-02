@@ -1,0 +1,126 @@
+﻿@model KTS_Testing_System.ViewModel.DepartmentIndexVM
+@using KTS_Testing_System.Classes
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="row panel-heading bg-system">
+    Departments Management
+
+    <div class="floatright">
+        <div class="col-md-12">
+
+            @Html.ActionLink("Add New Department", "Create", "Departments", null, htmlAttributes: new { @class = "btn btn-bg-system" })
+
+        </div>
+    </div>
+</div>
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <label>Departments Management</label>
+        </h4>
+    </div>
+    <!-- START table-responsive-->
+    <div class="table-responsive">
+        <table id="tblDepartments" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th width="15%" style="text-align:center">Serial No.</th>
+                    <th width="15%" style="text-align:center">Department</th>
+                    <th width="15%" style="text-align:center">Insertion User</th>
+                    <th width="15%" style="text-align:center">Insertion Date</th>
+                    <th width="15%" style="text-align:center">Action</th>
+
+                </tr>
+            </thead>
+            <tbody style="text-align:center"></tbody>
+        </table>
+
+    </div>
+    <!-- END table-responsive-->
+    <div class="panel-footer">
+
+    </div>
+</div>
+
+@*}*@
+
+
+@section scripts
+{
+    <script>
+                    var columns;
+                    $(document).ready(function () {
+                        columns = [
+                            { "title": "Serial No.", "data": "serial_no", "searchable": true },
+                            { "title": "Department", "data": "description", "searchable": true },
+                            { "title": "Insertion User", "data": "user", "searchable": true },
+                            { "title": "Insertion Date", "data": "insertion_timestamp", "searchable": true },
+                        ];
+
+                        columns.push({
+                            "title": "Action", "data": "department_id", "render": function (department_id) {
+                                return '<div style="overflow: hidden;white-space: nowrap;"><a class="btn btn-bg-system" href="/Departments/Edit?id=' + department_id + '" type="button" >Edit</a></div>';
+                            }
+                        });
+
+
+
+                        console.log(columns);
+
+                        var table = $('#tblDepartments').DataTable({
+                            "processing": true,
+                            "serverSide": true,
+                            "order": [[1, "asc"]],
+                            "rowId": 'department_id',
+                            "columnDefs": [{
+                                "targets": [0,4], "searchable": false, "orderable": false, "visible": true,
+                            }
+                            ],
+                            "ajax": {
+                                "url": "/Departments/GetIndex",
+                                "type": "POST",
+                                "dataType": "json",
+                                "data": function (d) {
+                                    return $.extend({}, d, {
+                                        //"id": formID
+                                    });
+                                }
+
+                            },
+                            "columns": columns
+                        });
+
+                    });
+
+
+    </script>
+
+
+
+}
+
+@if (!string.IsNullOrEmpty(Model.MessageTitle))
+{
+    <script src="~/Content/vendor/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript"></script>
+    if (Model.MessageTitle == "Success")
+    {
+        <script>
+
+                    swal('@Model.MessageTitle', '@Model.MessageDescription','success');
+        </script>
+    }
+    else
+    {
+        <script>
+
+                    swal('@Model.MessageTitle', '@Model.MessageDescription','error');
+        </script>
+
+    }
+}

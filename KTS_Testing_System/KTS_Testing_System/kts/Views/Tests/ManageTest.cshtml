@@ -1,0 +1,273 @@
+﻿@model KTS_Testing_System.ViewModel.TestVM
+@using KTS_Testing_System.Classes
+@using KTS_Testing_System.Extensions
+
+<div class="row panel-heading bg-system">
+    Test Management
+    <div class="floatright">
+        <div class="col-md-12">
+     
+            <button name="processingStatus" value="draft" type="button" onclick="submitTestOnClick(this)" class="btn btn-bg-system">Save Draft</button>
+            <button name="processingStatus" value="ready" type="button" onclick="submitTestOnClick(this)" class="btn btn-bg-system">Save and Close</button>
+            @*
+            
+                <button class="btn btn-bg-system" type="button" onclick="SetProcessingStatusAndSubmit(this)" value="previous">Previous</button>
+            
+            
+                <button class="btn btn-bg-system" type="button" onclick="SetProcessingStatusAndSubmit(this)" value="next">Next</button>*@
+            
+
+            @*<a href="/ApplicationsMailBox/Inbox/1" class="btn btn-bg-system">Back to List</a>*@
+            @Html.ActionLink("Back To List", "Index", "Tests", null, htmlAttributes: new { @class = "btn btn-bg-system" })
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+<div class="form-horizontal">
+    
+    <input type="hidden" value="@Model.Tests.test_id" name="Tests.test_id" />
+    @*<input type="hidden" name="prStatus" value="" id="prStatus" />*@
+    @*<input type="hidden" name="Tests.status" value="@Model.Tests.status" id="Tests_status" />*@
+    @Html.HiddenFor(m=>m.Tests.status)
+</div>
+<!-- TABS HERE -->
+<div class="row">
+
+    <!-- START panel-->
+    <div id="panelDemo14" class="panel panel-default">
+        <div class="panel-heading">
+            <label>Enter Test Details:</label>
+            <div class="floatright">
+                @*@if (!string.IsNullOrEmpty(Model.DeporteeData.DEPORTEE_ID) && Model.DeporteeData.DEPORTEE_ID != "0")
+                {
+                    <label>Tracking ID: @Model.DeporteeData.DEPORTEE_ID</label>
+                }*@
+            </div>
+        </div>
+        <div class="panel-body" style="padding-bottom: 0px; margin-bottom:10px;">
+            <div role="tabpanel" id="tabs">
+                <!-- Nav tabs-->
+
+                <ul role="tablist" class="nav nav-tabs">
+
+                    @{
+                        var Filter_Tab_Class = "active";
+                        var QuestionPool_Tab_Class = "disabled";
+                        var SelectedQuestions_Tab_Class = "disabled";
+
+                        var Filter_Tab_BtnClass = "active";
+                        var QuestionPool_Tab_BtnClass = "inactive";
+                        var SelectedQuestions_Tab_BtnClass = "inactive";
+                    }
+                   
+
+
+                    <li role="presentation" class="@Filter_Tab_Class">                        
+                        <button type="button" onclick="return SetProcessingStatusAndSubmit('FilterDetailsTab')" id="btnFilterDetailsTab" name="processingStatus" value="goto_one" class="btn btn-bg-system btntabs @Filter_Tab_BtnClass">Filter Details</button>
+                    </li>
+
+                    <li role="presentation" class="@QuestionPool_Tab_Class">
+                        <button type="button" onclick="return SetProcessingStatusAndSubmit('QuestionPoolDetailsTab')" id="btnQuestionPoolDetailsTab" name="processingStatus" value="goto_two" class="btn btn-bg-system btntabs @QuestionPool_Tab_BtnClass">Question Pool</button>
+
+                    </li>
+
+                    <li role="presentation" class="@SelectedQuestions_Tab_Class">
+                        <button type="button" onclick="return SetProcessingStatusAndSubmit('SelectedQuestionsTab')" id="btnSelectedQuestions" name="processingStatus" value="goto_three" class="btn btn-bg-system btntabs @SelectedQuestions_Tab_BtnClass">Selected Questions</button>
+                    </li>
+
+                </ul>
+                <!-- Tab panes-->
+                <div class="tab-content">
+
+                  
+                        <div id="FilterDetailsTab" name="detailsPanel" role="tabpanel" class="tab-pane fade in @Filter_Tab_Class">
+                            <div class="row">
+                                <div class="row top-spacing">
+                                    <div class="form-group">
+
+                                        @Html.LabelFor(model => model.Tests.description, "Test Detail", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+                                        <div class="col-lg-10 col-md-10 col-sm-10">
+
+                                            @Html.TextAreaFor(model => model.Tests.description, new { @class = "form-control mandatoryField", @autocomplete = "off", @maxlength = "32" })
+                                            @Html.ValidationMessageFor(model => model.Tests.description, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row top-spacing">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Tests.question_level_id, "Level", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+                                        <div class="col-lg-4 col-md-4 col-sm-4">
+                                            @Html.DropDownListFor(model => model.Tests.question_level_id, Lookup.GetLevels(), "-- Select Level --", new { @class = "ddlProjectvalue form-control mandatoryField" })
+                                            @Html.ValidationMessageFor(model => model.Tests.question_level_id, "", new { @class = "text-danger" })
+                                        </div>
+                                        @Html.LabelFor(model => model.Tests.total_time_minutes, "Total Time in Minutes", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+                                        <div class="col-lg-4 col-md-4 col-sm-4">
+                                            @Html.EditorFor(model => model.Tests.total_time_minutes, new { htmlAttributes = new { @class = "form-control", @maxlength = "128" } })
+                                            @Html.ValidationMessageFor(model => model.Tests.total_time_minutes, "", new { @class = "text-danger" })
+                                        </div>
+
+                                    </div>
+                                </div>
+                                @*<div class="row top-spacing">
+        <div class="form-group">
+            @Html.LabelFor(model => model.difficulty_code, "Difficulty", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                @Html.DropDownListFor(model => model.difficulty_code, Lookup.GetDifficulties(), "-- Select Difficulty --", new { @class = "ddlProjectvalue form-control mandatoryField" })
+                @Html.ValidationMessageFor(model => model.difficulty_code, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.importance_code, "Importance", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                @Html.DropDownListFor(model => model.importance_code, Lookup.GetImportances(), "-- Select Importance --", new { @class = "ddlProjectvalue form-control mandatoryField" })
+                @Html.ValidationMessageFor(model => model.importance_code, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>*@
+                                <div class="row top-spacing">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Tests.total_marks, "Total Marks", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+                                        <div class="col-lg-4 col-md-4 col-sm-4">
+                                            @Html.EditorFor(model => model.Tests.total_marks, new { htmlAttributes = new { @class = "form-control", @maxlength = "5", @readonly = "readonly" } })
+                                            @Html.ValidationMessageFor(model => model.Tests.total_marks, "", new { @class = "text-danger" })
+                                        </div>
+                                        @Html.LabelFor(model => model.Tests.test_versions, "Test Versions", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+                                        <div class="col-lg-4 col-md-4 col-sm-4">
+                                            @Html.EditorFor(model => model.Tests.test_versions, new { htmlAttributes = new { @class = "form-control", @maxlength = "3" } })
+                                            @Html.ValidationMessageFor(model => model.Tests.test_versions, "", new { @class = "text-danger" })
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row top-spacing">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.TotalTestQuestions, "Total Questions", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+                                        <div class="col-lg-4 col-md-4 col-sm-4">
+                                            @Html.EditorFor(model => model.TotalTestQuestions, new { htmlAttributes = new { @class = "form-control", @maxlength = "3", @readonly = "readonly" } })
+                                            @Html.ValidationMessageFor(model => model.TotalTestQuestions, "", new { @class = "text-danger" })
+                                        </div>
+                                        @Html.LabelFor(model => model.Tests.total_questions, "Selected Questions", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+                                        <div class="col-lg-4 col-md-4 col-sm-4">
+                                            @Html.EditorFor(model => model.Tests.total_questions, new { htmlAttributes = new { @class = "form-control", @maxlength = "3", @readonly = "readonly" } })
+                                            @Html.ValidationMessageFor(model => model.Tests.total_questions, "", new { @class = "text-danger" })
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="verticalStrip-bgSystem">
+                                        <label>Filters</label>
+                                        <div class="floatright">
+                                            <img src="~/Content/images/loadingHorizontal.gif" id="SubjectLoader" style="display:none;" />
+                                            <input id="add-subject" class="btn btn-bg-system" value="Add Subject" type="button">
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12" id="subject-list">
+                                            @Html.EditorForMany(x => x.subjectsCollection_SUBDIV)
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    
+
+                    
+                        <div id="QuestionPoolDetailsTab" name="detailsPanel" role="tabpanel" class="tab-pane fade in @QuestionPool_Tab_Class">
+                           
+
+                            <table id="tblQuestionsPool" class="table table-responsive table-striped table-bordered-bold table-hover">
+                                <thead style="background:#3a3f51">
+                                    <tr style="color:white">
+                                        <th style="color:white">S.No.</th>
+                                        <th style="color:white">Level</th>
+                                        <th style="color:white">Subject</th>
+                                        <th style="color:white">Difficulty</th>
+                                        <th style="color:white">Importance</th>
+                                        <th style="color:white">Question Detail</th>
+                                        <th style="color:white">Action</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody style="text-align:left;color:black"></tbody>
+
+                            </table>
+
+
+                        </div>
+                   
+
+                    
+                        <div id="SelectedQuestionsTab" name="detailsPanel" role="tabpanel" class="tab-pane fade in @SelectedQuestions_Tab_Class">
+
+                            <table id="tblSelectedQuestions" class="table table-responsive table-striped table-bordered-bold table-hover">
+                                <thead style="background:#3a3f51">
+                                    <tr style="color:white">
+                                        <th style="display:none;"></th>
+                                        <th style="color:white">S.No.</th>
+                                        <th style="color:white">Level</th>
+                                        <th style="color:white">Subject</th>
+                                        <th style="color:white">Difficulty</th>
+                                        <th style="color:white">Importance</th>
+                                        <th style="color:white">Question Detail</th>
+                                        <th style="color:white">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="text-align:left;color:black">
+                                    @foreach (var item in Model.listSelectedQuestions)
+                                    {
+                                        <tr id="selected_@item.question_id" role="row">
+                                            <td id="tblSelectedQuestions_@item.question_id" style="display:none;"><input type="hidden" value="@item.question_id" name="selected_questions" /></td>
+                                            <td>@item.serial_no</td>
+                                            <td>@item.level</td>
+                                            <td>@item.subject</td>
+                                            <td>@item.difficulty</td>
+                                            <td>@item.importance</td>
+                                            <td>@item.question</td>
+                                            <td>
+                                                <div style="overflow: hidden;white-space: nowrap;"><a class="btn btn-bg-system" onclick="RemoveQuestion(@item.question_id,'button')" type="button">Remove</a> </div>
+                                            </td>
+
+                                        </tr>
+                                    }
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                                           
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- END panel-->
+
+</div>

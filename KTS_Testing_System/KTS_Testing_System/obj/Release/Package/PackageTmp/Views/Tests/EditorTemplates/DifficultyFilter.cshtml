@@ -1,0 +1,76 @@
+﻿@model KTS_Testing_System.ViewModel.DifficultyFilter
+@using KTS_Testing_System.Classes
+@using KTS_Testing_System.Extensions;
+
+
+
+
+<div>
+    @using (Html.BeginCollectionItem("listDifficultyFilter"))
+    {
+        string prefix = ViewData.TemplateInfo.HtmlFieldPrefix;
+        var prefixStartParent = prefix.IndexOf('[');
+        var prefixEndParent = prefix.IndexOf(']');
+        string guidParent = prefix.Substring(prefixStartParent + 1, prefixEndParent - prefixStartParent - 1);
+        string toBeSearched = "listDifficultyFilter";
+
+        int ix = prefix.IndexOf(toBeSearched);
+
+        if (ix != -1)
+        {
+            prefix = prefix.Substring(ix + toBeSearched.Length);
+            // do something here
+        }
+        var prefixStart = prefix.IndexOf('[');
+        var prefixEnd = prefix.IndexOf(']');
+        string guid = prefix.Substring(prefixStart + 1, prefixEnd - prefixStart - 1);
+        @Html.HiddenFor(model => model.test_subject_difficulty_id)
+        <div class="row panel panel-success">
+            <div class="col-lg-12 col-md-12">
+                <div class="row">
+                    <div class="form-group col-md-6 display-table">
+                        @Html.LabelFor(model => model.difficulty_code, "Difficulty", new { @class = "col-md-4 control-label display-cell" })
+                        <div class="col-md-8 display-cell">
+                            @Html.DropDownListFor(model => model.difficulty_code, Lookup.GetDifficulties(), "-- Select Difficulty --", new { @class = "ddlProjectvalue form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6 display-table">
+                        @Html.LabelFor(model => model.DifficultyNoOFMcqs, "No of MCQs", new { @class = "col-md-4 control-label display-cell" })
+                        <div class="col-md-8 display-cell">
+                            @Html.EditorFor(x => x.DifficultyNoOFMcqs, new { htmlAttributes = new { @class = "form-control mandatoryField", @readonly="readonly" } })
+                        </div>
+                    </div>
+
+                </div>
+              
+            </div>
+            @*<div class="col-lg-2 col-md-2">
+                <button type='button' class='btn btn-danger display-cell floatright' id="" onclick='DeleteLocationNew(this,"2")'>Delete</button>
+            </div>
+            <div class="col-lg-2 col-md-2"></div>*@
+            <div class="col-lg-10 col-md-10">
+                <div class="col-lg-12">
+                    <strong>Importance Details</strong>
+                </div>
+                <div class="panel">
+                    @Html.EditorFor(model => model.listImportanceFilter)
+                </div>
+            </div>
+            @*<div class="col-lg-1 col-md-1"></div>*@
+            @*<div class="verticalStrip-bgSystem col-lg-12">
+                <label>Importance Details</label>
+                <div class="floatright">
+                    <img src="~/Content/images/loadingHorizontal.gif" id="ImportanceLoader_@guid" style="display:none;" />
+                    <input id="add-importance" class="btn btn-bg-system" value="Add New Importance" onclick="AddImportance('@guidParent','@guid')" type="button">
+                </div>
+
+
+            </div>
+            <div class="col-lg-12" id="subject_importance_@guid">
+                @Html.EditorFor(model => model.listImportanceFilter)
+            </div>*@
+
+        </div>
+    }
+</div>

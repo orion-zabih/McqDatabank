@@ -1,0 +1,89 @@
+﻿@model KTS_Testing_System.ViewModel.AnswersForQuestion
+@using KTS_Testing_System.Classes
+@{
+    var prefix = ViewData.TemplateInfo.HtmlFieldPrefix;
+    var prefixStart_GuidParent = prefix.IndexOf('[');
+    var prefixEnd_GuidParent = prefix.IndexOf(']');
+    string guid = prefix.Substring(prefixStart_GuidParent + 1, prefixEnd_GuidParent - prefixStart_GuidParent - 1);
+    var LoggedUser = (User as CustomPrincipal);
+}
+
+
+<div class="row">
+
+    @Html.HiddenFor(model => model.answer_id)
+    <div class="form-group ">
+        @Html.LabelFor(model => model.description, "Option", htmlAttributes: new { @class = "col-lg-1 col-md-1 col-sm-1 control-label" })
+        <div class="col-lg-3 col-md-3 col-sm-3">
+            @Html.TextBoxFor(model => model.description, new { @class = "form-control mandatoryField", @autocomplete = "off", @maxlength = "256" })
+            @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+        </div>
+
+        @*@Html.LabelFor(model => model.ConstituencyType, "Constituency Type", htmlAttributes: new { @class = "col-lg-2 col-md-2 col-sm-1 control-label " })*@
+        <div class="col-lg-4 col-md-4 col-sm-4">
+            @Html.TextBoxFor(model=>model.correct_p, new { @hidden = "hidden"})
+            <div class="radio c-radio col-lg-5 col-md-5 col-sm-6" style="margin-top:0px; text-align: center">
+                <label>
+                    
+                    @if (Model.correct_p == "true")
+                    {                       
+                        
+                            <input onclick='RadSelectionChanged("@(guid)")' @*name="RadCorrectOption_@guid"*@ name="RadCorrectOption" id="RadCorrectOption_@guid" value="true" checked="checked" type="radio">
+                    }
+                    else
+                    {
+                        <input onclick='RadSelectionChanged("@(guid)")' @*name="RadCorrectOption_@guid"*@ name="RadCorrectOption" id="RadCorrectOption_@guid" value="true" type="radio">
+                    }
+
+                    <span class="fa fa-circle"></span>Correct Option
+                </label>
+            </div>
+            @*<div class="radio c-radio col-lg-5 col-md-5 col-sm-6" style="margin-top:0px; text-align: center">
+                <label>
+                    @if (Model.ConstituencyType == "pa")
+                    {
+                        if (LoggedUser.election_status == "open")
+                        {
+                            <input onclick='RadSelectionChanged(this,"CandidateConstituencies_DIV_@(guid)__ConstituencyID","CandidateConstituencies_DIV_@(guid)__SelectedProvince","CandidateConstituencies_DIV_@(guid)__ElectionEventID")' name="RadConstituency_@guid" id="PA_RadConstituency_@guid" value="pa" type="radio" checked="checked" disabled="disabled">
+                        }
+                        else
+                        {
+                            <input onclick='RadSelectionChanged(this,"CandidateConstituencies_DIV_@(guid)__ConstituencyID","CandidateConstituencies_DIV_@(guid)__SelectedProvince","CandidateConstituencies_DIV_@(guid)__ElectionEventID")' name="RadConstituency_@guid" id="PA_RadConstituency_@guid" value="pa" type="radio" checked="checked">
+                        }
+                    }
+                    else
+                    {
+                        if (LoggedUser.election_status == "open")
+                        {
+                            <input onclick='RadSelectionChanged(this,"CandidateConstituencies_DIV_@(guid)__ConstituencyID","CandidateConstituencies_DIV_@(guid)__SelectedProvince","CandidateConstituencies_DIV_@(guid)__ElectionEventID")' name="RadConstituency_@guid" id="PA_RadConstituency_@guid" value="pa" type="radio" disabled="disabled">
+                        }
+                        else
+                        {
+                            <input onclick='RadSelectionChanged(this,"CandidateConstituencies_DIV_@(guid)__ConstituencyID","CandidateConstituencies_DIV_@(guid)__SelectedProvince","CandidateConstituencies_DIV_@(guid)__ElectionEventID")' name="RadConstituency_@guid" id="PA_RadConstituency_@guid" value="pa" type="radio">
+                        }
+                    }
+
+                    <span class="fa fa-circle"></span>PA Constituency
+                </label>
+            </div>*@
+        </div>
+
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="form-group">
+
+     
+
+
+        <div class="col-md-1 col-sm-3 display-cell">
+            
+                <input type="button" value="Delete Option" class="btn btn-danger" onclick="DeleteLocation(this)" />
+            
+
+        </div>
+    </div>
+
+</div>

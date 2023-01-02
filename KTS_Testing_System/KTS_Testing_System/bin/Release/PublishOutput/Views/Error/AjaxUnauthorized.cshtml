@@ -1,0 +1,24 @@
+﻿@{
+    Layout = ""; // Result of an ajax call
+}
+
+// Refresh the page, resulting in MVC default login/redirection
+<script>
+    $(document).ready(function($) {
+        location.reload(true);
+    });
+</script>
+
+// Only here for if Javascript is off
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-12">
+                Authorisation timeout.
+            </div>
+        </div>
+    </div>
+    <div class="panel-body black-text">
+        Please refresh the page and log back in.
+    </div>
+</div>

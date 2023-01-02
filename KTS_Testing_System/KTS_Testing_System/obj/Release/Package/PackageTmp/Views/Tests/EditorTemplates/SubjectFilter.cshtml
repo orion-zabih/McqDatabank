@@ -1,0 +1,91 @@
+﻿@model KTS_Testing_System.ViewModel.SubjectFilter
+
+@using KTS_Testing_System.Extensions;
+@using KTS_Testing_System.Classes
+
+
+
+<div class="rowModified">
+
+    @using (Html.BeginCollectionItem("subjectsCollection_SUBDIV"))
+    {
+
+        var prefix = ViewData.TemplateInfo.HtmlFieldPrefix;
+        var prefixStart = prefix.IndexOf('[');
+        var prefixEnd = prefix.IndexOf(']');
+        string guid = prefix.Substring(prefixStart + 1, prefixEnd - prefixStart - 1);
+
+
+        <div class="panel panel-default" id="panel_Subject_@guid" style="margin-bottom:15px;margin-top:15px;">
+
+            <div class="panel-heading" role="tab" id="heading@(guid)" style="margin-bottom:0px;">
+
+                <label id="lbl_@guid" role="button" data-toggle="collapse" data-parent="#accordionSubjectDetails" href="#collapse@(guid)" aria-expanded="false" aria-controls="collapse@(guid)">
+
+                    @if (Model.subject_id == 0)
+                    {
+                        @:New Subject
+                    }
+                    else
+                    {
+                        @Html.HiddenFor(m=>m.user_test_subject_id)
+                        @Utility.ToTitlecase(Model.subject_id)
+
+                    }
+                </label>
+
+
+                <div class="floatright">
+                    <button type='button' class='btn btn-danger display-cell floatright' id="" onclick='DeleteLocationNew(this, "4")'>Delete Subject</button>
+
+                </div>
+
+            </div>
+            <div id="collapse@(guid)" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading@(guid)">
+                <div class="panel-body">
+
+                    @*@Html.HiddenFor(model => model.subject_id)*@
+                    <div class="verticalStrip-bgSystem">
+                        <label>Subject Details</label>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="form-group col-md-6 display-table">
+                                @Html.LabelFor(model => model.subject_id, "Subject", new { @class = "col-md-4 control-label display-cell" })
+                                <div class="col-md-8 display-cell">
+                                    @Html.DropDownListFor(model => model.subject_id, Lookup.GetSubjects(), "-- Select Subject --", new { @class = "ddlProjectvalue form-control", onchange = "SubjectChange('" + @guid + "')" })
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6 display-table">
+                                @Html.LabelFor(model => model.SubjectNoOFMcqs, "No of MCQs", new { @class = "col-md-4 control-label display-cell " })
+                                <div class="col-md-8 display-cell">
+                                    @Html.EditorFor(model => model.SubjectNoOFMcqs, new { htmlAttributes = new { @class = "form-control mandatoryField", @readonly="readonly" } })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="verticalStrip-bgSystem col-lg-12">
+                            <label>Subject Difficulty Details</label>
+                            @*<div class="floatright">
+                                <img src="~/Content/images/loadingHorizontal.gif" id="DifficultyLoader_@guid" style="display:none;" />
+                                <input id="add-difficulty" class="btn btn-bg-system" value="Add New Difficulty" onclick="AddDifficulty('@guid')" type="button">
+                            </div>*@
+
+
+                        </div>
+                        <div class="col-lg-12" id="subject_difficulty_@guid">
+                            @Html.EditorFor(model => model.listDifficultyFilter)
+                        </div>
+
+                     
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+</div>

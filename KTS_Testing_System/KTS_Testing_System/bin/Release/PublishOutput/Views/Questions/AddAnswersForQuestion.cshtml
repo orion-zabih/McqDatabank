@@ -1,0 +1,9 @@
+﻿
+
+@model IEnumerable<KTS_Testing_System.ViewModel.AnswersForQuestion>
+
+@{
+    Layout = null;
+}
+@using KTS_Testing_System.Extensions;
+@Html.EditorForMany(@model => model, "AnswersForQuestion_DIV")

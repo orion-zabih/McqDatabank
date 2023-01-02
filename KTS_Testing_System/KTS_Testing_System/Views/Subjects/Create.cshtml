@@ -1,0 +1,97 @@
+﻿@model KTS_Testing_System.ViewModel.LibraryVM
+@using KTS_Testing_System.Extensions
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm("Create", "Subjects", FormMethod.Post, new { id = "subjectForm" }))
+{
+
+    @Html.AntiForgeryToken()
+    if (!ViewData.ModelState.IsValid)
+    {
+        <div class="msg-block alert alert-danger alert-dismissible" role="alert" style="margin:10px;">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            @Html.ValidationSummary(true, "")
+        </div>
+    }
+    <div class="row panel-heading bg-system">
+        New Subject
+
+        @*@Html.HiddenFor(m => m.prStatus)*@
+
+        <div class="floatright">
+            <div class="col-md-12">
+                <input value="Create" name="processingStatus" id="processingStatus" onclick="submitSubjectOnClick(this)" class="btn btn-bg-system" type="button">
+
+                @Html.ActionLink("Back To List", "Index", "Subjects", null, htmlAttributes: new { @class = "btn btn-bg-system" })
+            </div>
+        </div>
+    </div>
+
+
+    <div>
+
+        <div class="row top-spacing">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Subject Details
+                </div>
+
+                <div class="panel-body">
+
+                    @Html.HiddenFor(model => model.subject.subject_id)
+                    <div class="row">
+                        <div class="row top-spacing">
+                            <div class="form-group">
+
+                                @Html.LabelFor(model => model.subject.description, "Subject Name", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+
+                                    @Html.TextBoxFor(model => model.subject.description, new { @class = "form-control mandatoryField", @autocomplete = "off", @maxlength = "128" })
+                                    @Html.ValidationMessageFor(model => model.questionLevels.description, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        @*<div class="row top-spacing">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Roles
+                    </div>
+                    <div class="panel-body">
+
+                        <div role="tabpanel" id="RolesPanel">
+
+                            @Html.Partial("RolesPanel", Model)
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>*@
+
+
+
+    </div>
+
+}
+
+@section scripts
+{
+    
+    <script src="~/Scripts/ViewScripts/Library_Scripts.js"></script>
+    @if (Model != null && !string.IsNullOrEmpty(Model.MessageDescription))
+    {
+        <script> sweetAlert("", "@Model.MessageDescription", "error"); </script>
+    }
+
+
+}

@@ -1,0 +1,15 @@
+delete from Test_versions;
+delete from Test_questions;
+delete from subject_difficulty_importance;
+delete from test_subjects_difficulty;
+delete from user_test_subjects;
+delete from User_Tests;
+delete from answer_images;
+delete from answers;
+delete from question_images;
+delete from questions;
+delete from question_levels;
+delete from subjects;
+delete from user_role_map where user_id!=1;
+delete from users where user_id!=1;
+delete from Departments;

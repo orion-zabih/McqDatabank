@@ -1,0 +1,148 @@
+﻿@model KTS_Testing_System.ViewModel.QuestionsVM
+@using KTS_Testing_System.Classes
+@using KTS_Testing_System.Extensions
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm("Create", "Questions", FormMethod.Post, new { id = "questionForm" }))
+{
+
+    @Html.AntiForgeryToken()
+    if (!ViewData.ModelState.IsValid)
+    {
+        <div class="msg-block alert alert-danger alert-dismissible" role="alert" style="margin:10px;">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            @Html.ValidationSummary(true, "")
+        </div>
+    }
+    <div class="row panel-heading bg-system">
+        New Question
+
+        @*@Html.HiddenFor(m => m.prStatus)*@
+
+        <div class="floatright">
+            <div class="col-md-12">
+                <input value="Create" name="processingStatus" id="processingStatus" onclick="submitQuestionOnClick(this)" class="btn btn-bg-system" type="button">
+
+                @Html.ActionLink("Back To List", "Index", "Questions", null, htmlAttributes: new { @class = "btn btn-bg-system" })
+            </div>
+        </div>
+    </div>
+
+
+    <div>
+
+        <div class="row top-spacing">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Question Details
+                </div>
+
+                <div class="panel-body">
+
+                    @Html.HiddenFor(model => model.Question.question_id)
+                    <div class="row">
+                        <div class="row top-spacing">
+                            <div class="form-group">
+
+                                @Html.LabelFor(model => model.Question.description, "Question Detail", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+                                <div class="col-lg-10 col-md-10 col-sm-10">
+
+                                    @Html.TextAreaFor(model => model.Question.description, new { @class = "form-control mandatoryField", @autocomplete = "off", @maxlength = "32" })
+                                    @Html.ValidationMessageFor(model => model.Question.description, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row top-spacing">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Question.question_level_id, "Level", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    @Html.DropDownListFor(model => model.Question.question_level_id, Lookup.GetLevels(), "-- Select Level --", new { @class = "ddlProjectvalue form-control mandatoryField" })
+                                    @Html.ValidationMessageFor(model => model.Question.question_level_id, "", new { @class = "text-danger" })
+                                </div>
+
+                                @Html.LabelFor(model => model.Question.subject_id, "Subject", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    @Html.DropDownListFor(model => model.Question.subject_id, Lookup.GetSubjects(), "-- Select Subject --", new { @class = "ddlProjectvalue form-control mandatoryField" })
+                                    @Html.ValidationMessageFor(model => model.Question.subject_id, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row top-spacing">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Question.difficulty_code, "Difficulty", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    @Html.DropDownListFor(model => model.Question.difficulty_code, Lookup.GetDifficulties(), "-- Select Difficulty --", new { @class = "ddlProjectvalue form-control mandatoryField" })
+                                    @Html.ValidationMessageFor(model => model.Question.difficulty_code, "", new { @class = "text-danger" })
+                                </div>
+
+                                @Html.LabelFor(model => model.Question.importance_code, "Importance", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    @Html.DropDownListFor(model => model.Question.importance_code, Lookup.GetImportances(), "-- Select Importance --", new { @class = "ddlProjectvalue form-control mandatoryField" })
+                                    @Html.ValidationMessageFor(model => model.Question.importance_code, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row top-spacing">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Question.marks, "Marks", htmlAttributes: new { @class = "control-label col-lg-2 col-md-2 col-sm-2 " })
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    @Html.EditorFor(model => model.Question.marks, new { htmlAttributes = new { @class = "form-control", @maxlength = "128" } })
+                                    @Html.ValidationMessageFor(model => model.Question.marks, "", new { @class = "text-danger" })
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="row top-spacing">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h5 class="verticalStrip-pvcolor">
+                            Add Answer
+                            <div style="float:right;">                                
+                                <input id="add-answer" style="line-height:1;" class="btn btn-bg-system" value="Add Answer" type="button">  
+                            </div>
+                        </h5>
+                    </div>
+                    <div class="panel-body">
+
+                        <div role="tabpanel" id="AnswersPanel">
+                            <div class="panel-collapse collapse in">
+                                <div class="form-group" id="answer-list">
+                                    @Html.EditorForMany(model => model.AnswersForQuestion_DIV)
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+    </div>
+
+}
+
+@section scripts
+{
+
+    <script src="~/Scripts/ViewScripts/Question_Scripts.js"></script>
+    @if (Model != null && !string.IsNullOrEmpty(Model.MessageDescription))
+    {
+        <script> sweetAlert("", "@Model.MessageDescription", "error"); </script>
+    }
+
+
+}
